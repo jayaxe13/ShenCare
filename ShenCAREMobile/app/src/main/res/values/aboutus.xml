@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="aboutUs_content">
+        <![CDATA[
+        <body>
+        <h1>ShenCARE – Creating a world where all seniors can live their life happily, healthily and with dignity.</h1>
+
+        <div>ShenCARE is designed to help older adults and their families and caregivers find their way through the maze of services for seniors by identifying trustworthy local support resources.</div>
+
+        <div>Our goal is to provide users with the information and resources that will help older persons live independently and safely in their homes and communities for as long as possible.</div>
+
+        <div>We provide a one stop e-home Portal and Mobile platform with capability to search for information on solution and services, conduct transactional and other services that meet consumers’ needs and pain points. Our customers include aging elders, their guardians, and service and products providers and other organization which support the aging/elders community. The value propositions of our platform are:</div>
+
+
+        <div>- Information search for informed decision. <br>
+        <br>
+        -Single platform facilitate services and products transactions.<br>
+        <br>
+        -Workflow or enhanced services for the senior community to obtain assistance or managed their needs.<br>
+        <br>
+        -Reduce workload of caregiver/guardian in supporting the seniors/elders.</div>
+
+        </body>
+
+      ]]>
+
+    </string>
+</resources>
