@@ -14,6 +14,7 @@
         android:background="@color/shenHeadbar"
         app:title="ShenCARE" />
 
+
     <RelativeLayout
         android:id="@+id/headphoto"
         android:layout_below="@+id/home_toolbar"
@@ -104,7 +105,7 @@
                     android:weightSum="2">
 
                     <TextView
-                        android:id="@+id/aboutUs"
+                        android:id="@+id/aboutUs_text_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -116,7 +117,7 @@
                         />
 
                     <TextView
-                        android:id="@+id/contactUs"
+                        android:id="@+id/termOfUse_text_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -124,7 +125,7 @@
                         android:clickable="true"
                         android:contextClickable="true"
                         android:gravity="center"
-                        android:text="Contact us"
+                        android:text="Terms of Use"
                         />
                 </LinearLayout>
 

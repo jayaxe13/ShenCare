@@ -7,10 +7,30 @@
     tools:context="com.shencare.shencaremobile.Term_Of_Use">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/aboutUs_toolbar"
+        android:id="@+id/termOfUse_toolbar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/shenHeadbar"
         app:title="Term Of Use" />
+
+    <LinearLayout
+        android:id="@+id/termOfUse_body"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/termOfUse_toolbar"
+        android:orientation="vertical" >
+        <ScrollView android:id="@+id/termOfUse_scrollView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <WebView
+                android:id="@+id/termOfUse_content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="50px"
+                />
+
+        </ScrollView>
+    </LinearLayout>
 
 </RelativeLayout>

@@ -23,7 +23,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-            <TextView
+            <WebView
                 android:id="@+id/aboutUs_content"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
