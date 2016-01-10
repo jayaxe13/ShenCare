@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pot_characters">
+        <item> -- Please select preferred occupational therapist--</item>
+        <item>Burns and Plastics Rehabilitation</item>
+        <item>Cardiac Rehabilitation</item>
+        <item>Children and Youth Assistance</item>
+        <item>Driving Assessment and Rehabilitation</item>
+        <item>Geriatrics Rehabilation</item>
+        <item>Hand Therapy</item>
+        <item>Hospitalisation/Medical Visits Assistance</item>
+        <item>Living Assistance</item>
+        <item>Low Vision Rehabilitation</item>
+        <item>Neurological Rehabilitation</item>
+        <item>Occupational Health and Ergonomics</item>
+        <item>Oncology Rehabilitation</item>
+        <item>OT</item>
+        <item>Paediatrics and Child Development</item>
+        <item>Phyiotheorpist</item>
+        <item>Psychosocial Rehabilitation</item>
+        <item>Volunteer</item>
+    </string-array>
+
+
+    <string-array name="mpl_characters">
+        <item>-- Please select most preferred location--</item>
+        <item>Aljunied</item>
+        <item>Ang Mo Kio</item>
+        <item>Ayer Rajah</item>
+        <item>Bedok</item>
+        <item>Bishan</item>
+        <item>Boon Keng</item>
+        <item>Boon Lay</item>
+        <item>Bukit Batok</item>
+        <item>Bukit Merah</item>
+        <item>Bukit Panjang</item>
+        <item>Bukit Timah</item>
+        <item>CBD</item>
+        <item>Central</item>
+        <item>Changi</item>
+        <item>Changi/East Coast</item>
+        <item>Chinatown</item>
+        <item>Choa Chu Kang</item>
+        <item>Clementi</item>
+        <item>Commonwealth</item>
+        <item>East</item>
+        <item>East Coast</item>
+        <item>Geylang</item>
+        <item>Holland</item>
+        <item>Hougang</item>
+        <item>Joo Chiat</item>
+        <item>Jurong</item>
+        <item>Jurong East</item>
+        <item>Jurong West</item>
+        <item>Kallang</item>
+        <item>Kallang/Whampoa</item>
+        <item>Katong</item>
+        <item>Lim Chu Kang</item>
+        <item>Mandai</item>
+        <item>Marine Parade</item>
+        <item>Newton</item>
+        <item>North</item>
+        <item>North¬East</item>
+        <item>Novena</item>
+        <item>NY</item>
+        <item>Orchard</item>
+        <item>Outram</item>
+        <item>Pasir Panjang</item>
+        <item>Pasir Ris</item>
+        <item>Paya Lebar</item>
+        <item>Pioneer</item>
+        <item>Punggol</item>
+        <item>Queenstown</item>
+        <item>Seletar</item>
+        <item>Sembawang</item>
+        <item>Sengkang</item>
+        <item>Serangoon</item>
+        <item>Simei/East Coast</item>
+        <item>Tampines</item>
+        <item>Tanglin/Orchard</item>
+        <item>Tanjong Pagar</item>
+        <item>Thompson</item>
+        <item>Tiong Bahru</item>
+        <item>Toa Payoh</item>
+        <item>Ubi</item>
+        <item>West</item>
+        <item>Whampoa</item>
+        <item>Woodlands</item>
+        <item>Yio Chu Kang</item>
+        <item>Yishun</item>
+    </string-array>
+
+    <string-array name="care_searvice_category">
+        <item>Volunteer</item>
+        <item>Occupational Therapist</item>
+        <item>Clinic</item>
+        <item>Reason for Visit</item>
+        <item>By Name</item>
+    </string-array>
+</resources>

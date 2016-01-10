@@ -10,8 +10,9 @@
         android:id="@+id/aboutUs_toolbar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/shenHeadbar"
-        app:title="About Us" />
+        android:background="@color/shen"
+        app:title="About Us"
+        app:titleTextColor="@color/toolbarTitleColor"/>
 
     <LinearLayout
         android:id="@+id/aboutUs_body"

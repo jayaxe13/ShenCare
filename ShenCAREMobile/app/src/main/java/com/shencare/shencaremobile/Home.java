@@ -11,9 +11,11 @@ import android.view.View;
 
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class Home extends AppCompatActivity implements View.OnClickListener{
+    ImageButton volunteerButton;
     TextView aboutUs,termOfUse;
 
 
@@ -21,6 +23,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        volunteerButton = (ImageButton)findViewById(R.id.volunteerButton);
+        volunteerButton.setOnClickListener(this);
 
         aboutUs = (TextView)findViewById(R.id.aboutUs_text_button);
         termOfUse = (TextView)findViewById(R.id.termOfUse_text_button);
@@ -35,10 +40,25 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
         int id = v.getId();
         switch(id){
+            //main 4 buttons
+            //case R.id.calendarButton:
+                //startActivity(new Intent(Home.this,Event.class));
+               // break;
+            //case R.id.services:
+                //startActivity(new Intent(Home.this, EldercareServices.class));
+                //break;
+           // case R.id.shopButton:
+               // startActivity(new Intent(Home.this, ShoppingActivity.class));
+               // break;
+            case R.id.volunteerButton:
+                startActivity(new Intent(Home.this, VolunteerSignUp.class));
+                break;
+
             // about Us
             case R.id.aboutUs_text_button:
                 startActivity(new Intent(Home.this, About_Us.class));
                 break;
+            //term of use
             case R.id.termOfUse_text_button:
                 startActivity(new Intent(Home.this, Term_Of_Use.class));
                 break;

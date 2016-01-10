@@ -10,8 +10,9 @@
         android:id="@+id/termOfUse_toolbar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/shenHeadbar"
-        app:title="Term Of Use" />
+        android:background="@color/shen"
+        app:title="Term Of Use"
+        app:titleTextColor="@color/toolbarTitleColor"/>
 
     <LinearLayout
         android:id="@+id/termOfUse_body"

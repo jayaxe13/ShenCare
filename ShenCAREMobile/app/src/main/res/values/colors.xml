@@ -3,5 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="shenHeadbar">#6fb4dc</color>
+    <color name="shen">#65C7E2</color>
+    <color name="fontColor">#000000</color>
+    <color name="toolbarTitleColor">#ffffff</color>
 </resources>

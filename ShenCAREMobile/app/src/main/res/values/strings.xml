@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">ShenCAREMobile</string>
+
+    <!--login activity-->
+    <string name="title_login">Login</string>
+    <string name="button_login">Login in</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="login_username">Username</string>
+    <string name="login_pw">Password</string>
+
+    <!--Register Dropdown list-->
+    <string name="regis_name">Name</string>
+    <string name="regis_surname">Surname</string>
+    <string name="regis_username">Username</string>
+    <string name="regis_pw">Password</string>
+    <string name="regis_cpw">Confirm Password</string>
+    <string name="regis_email">Email Address</string>
+    <string name="prompt_pot">-- Please select preferred occupational therapist--</string>
+    <string name="prompt_mpl">-- Please select most preferred location--</string>
+
+    <!-- Login activity -->
+    <string name="action_sign_up_short">Sign Up</string>
+
+
+    <!--Volunteer Sign Up Function-->
+    <string name="volimage">VolunteerImage</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="name">Y</string>
+    <string name="volunteerName">Your Name (Required)</string>
+    <string name="volunteerForm">Volunteer Application Form</string>
+    <string name="volunteerNameInput"></string>
+    <string name="yourEmail">Your Email(Required)</string>
+    <string name="volunteerEmailInput"></string>
+    <string name="volunteerPhone">Your Phone number(Required)</string>
+    <string name="volunteerPhoneInput"></string>
+    <string name="work">The frequency of your voluntary work is</string>
+    <string name="volunteerLeaveAMessage">Your Message</string>
+    <string name="successMessage">Thanks for your participation!</string>
+    <string name="vol_join">Join</string>
 </resources>
