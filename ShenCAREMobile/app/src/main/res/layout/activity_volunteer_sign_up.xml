@@ -223,7 +223,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/volunteerLeaveAMessage"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:paddingTop="20px"
+                android:layout_marginTop="10px"
                 android:textColor="@color/fontColor" />
 
             <EditText
@@ -231,12 +231,13 @@
                 android:layout_height="wrap_content"
                 android:layout_width="fill_parent"
                 android:inputType="textCapSentences|textMultiLine"
+                android:isScrollContainer="true"
                 android:gravity="left|top"
                 android:minLines="8"
                 android:maxLines="10"
                 android:scrollbars="vertical"
                 android:background="@drawable/vol_your_message_box"
-                android:paddingBottom="40dip"
+                android:layout_marginBottom="20dip"
                 android:textColor="@color/fontColor">
             </EditText>
 

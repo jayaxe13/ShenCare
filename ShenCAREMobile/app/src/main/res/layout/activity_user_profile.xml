@@ -12,15 +12,29 @@
         android:layout_height="wrap_content"
         android:background="@color/shen"
         app:title="My Profile"
-        app:titleTextColor="@color/toolbarTitleColor"/>
+        app:titleTextColor="@color/toolbarTitleColor">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:id="@+id/edit_profile_button"
+        android:background="@null"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:textColor="#ffffff"
+        android:text="Edit"
+        android:textAppearance="?android:attr/textAppearanceButton"/>
+
+    </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
         android:id="@+id/profile_body"
         android:layout_below="@id/profile_toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp">
 
@@ -28,10 +42,12 @@
             android:id="@+id/profile_scroll"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:isScrollContainer="false">
 
         <LinearLayout
-            android:id="@+id/username_login_form"
+            android:id="@+id/profile_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -48,14 +64,15 @@
 
                 <TextView
                     android:id="@+id/user_username"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignTop="@+id/profile_addr_field"
                     android:text="Azuki"
                     android:gravity="left"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:background="@drawable/profile_text"/>
 
 
             <TextView
@@ -65,13 +82,13 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/user_username"
-                android:text="Gender"
+                android:text="Name"
                 android:layout_marginTop="10dp"
                 android:textSize="60px" />
 
             <TextView
                 android:id="@+id/user_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
@@ -79,7 +96,8 @@
                 android:layout_alignTop="@+id/profile_name_field"
                 android:text="CX"
                 android:gravity="left"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:background="@drawable/profile_text"/>
 
 
             <TextView
@@ -95,15 +113,16 @@
 
             <TextView
                 android:id="@+id/user_surname"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/profile_surname_field"
                 android:layout_alignTop="@+id/profile_surname_field"
                 android:text="Chen"
-                android:gravity="right"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:gravity="left"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:background="@drawable/profile_text"/>
 
                 <TextView
                     android:id="@+id/profile_gender_field"
@@ -118,15 +137,16 @@
 
                 <TextView
                     android:id="@+id/user_gender"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_below="@id/profile_gender_field"
                     android:layout_alignTop="@+id/profile_gender_field"
                     android:text="Female"
-                    android:gravity="right"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:gravity="left"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:background="@drawable/profile_text"/>
 
 
             <TextView
@@ -142,15 +162,16 @@
 
                 <TextView
                     android:id="@+id/user_contact"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_below="@id/profile_contact_field"
                     android:layout_alignTop="@+id/profile_contact_field"
                     android:text="+65 81281282"
-                    android:gravity="right"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:gravity="left"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:background="@drawable/profile_text"/>
 
                 <TextView
                     android:id="@+id/profile_email_field"
@@ -165,14 +186,15 @@
 
                 <TextView
                     android:id="@+id/user_email"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignTop="@+id/profile_email_field"
                     android:text="abc_def_ghi@asdfkjh.com"
                     android:gravity="left"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:background="@drawable/profile_text"/>
 
                 <TextView
                     android:id="@+id/profile_addr_field"
@@ -187,14 +209,16 @@
 
                 <TextView
                     android:id="@+id/user_addr"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignTop="@+id/profile_addr_field"
                     android:text="123 Toa Payoh Lorong 1 #12-01203"
+                    android:isScrollContainer="true"
                     android:gravity="left"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:background="@drawable/profile_text"/>
 
             <TextView
                 android:id="@+id/profile_pot_field"
@@ -209,14 +233,15 @@
 
             <TextView
                 android:id="@+id/user_pot"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignTop="@+id/profile_pot_field"
                 android:text="Volunteer"
                 android:gravity="left"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:background="@drawable/profile_text"/>
 
             <TextView
                 android:id="@+id/profile_mpl_field"
@@ -231,14 +256,15 @@
 
             <TextView
                 android:id="@+id/user_mpl"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignTop="@+id/profile_mpl_field"
                 android:text="Toa Payoh"
                 android:gravity="left"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:background="@drawable/profile_text"/>
 
 
             </LinearLayout>

@@ -8,6 +8,7 @@
     <string name="prompt_password">Password</string>
     <string name="login_username">Username</string>
     <string name="login_pw">Password</string>
+    <string name="action_sign_up_short">Sign Up</string>
 
     <!--Register Dropdown list-->
     <string name="regis_name">Name</string>
@@ -18,9 +19,6 @@
     <string name="regis_email">Email Address</string>
     <string name="prompt_pot">-- Please select preferred occupational therapist--</string>
     <string name="prompt_mpl">-- Please select most preferred location--</string>
-
-    <!-- Login activity -->
-    <string name="action_sign_up_short">Sign Up</string>
 
 
     <!--Volunteer Sign Up Function-->
@@ -38,4 +36,8 @@
     <string name="volunteerLeaveAMessage">Your Message</string>
     <string name="successMessage">Thanks for your participation!</string>
     <string name="vol_join">Join</string>
+
+    <!--User Profile Function-->
+    <string name="editProfileButton">Edit</string>
+    <string name="saveProfileButton">Save</string>
 </resources>

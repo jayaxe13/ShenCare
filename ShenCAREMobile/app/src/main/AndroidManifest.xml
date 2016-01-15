@@ -11,7 +11,6 @@
         <activity
             android:name=".Home"
             android:screenOrientation="portrait" >
-
         </activity>
         <activity
             android:name=".About_Us"
@@ -23,22 +22,31 @@
         </activity>
         <activity
             android:name=".VolunteerSignUp"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
             android:name=".UserLogin"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
         </activity>
-        <activity android:name=".UserRegistration"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".UserRegistration"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+        <activity
+            android:name=".UserProfile"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserProfile"
-            android:screenOrientation="portrait">
+        <activity android:name=".UserProfileEdit"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
         </activity>
     </application>
 

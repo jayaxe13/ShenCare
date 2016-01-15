@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.shencare.shencaremobile.UserProfileEdit">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/edit_profile_toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/shen"
+        app:title="Edit Profile"
+        app:titleTextColor="@color/toolbarTitleColor">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:id="@+id/save_profile_button"
+        android:background="@null"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:textColor="#ffffff"
+        android:text="Save"
+        android:textAppearance="?android:attr/textAppearanceButton"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/edit_profile_body"
+        android:layout_below="@id/edit_profile_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <ScrollView
+            android:id="@+id/edit_profile_scroll"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:id="@+id/edit_profile_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/edit_profile_username_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:text="My Username"
+                    android:textSize="60px"/>
+
+                <TextView
+                    android:id="@+id/edit_user_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5px"
+                    android:paddingRight="5px"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:text="Azuki"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:background="@drawable/profile_text"/>
+
+
+                <TextView
+                    android:id="@+id/edit_profile_name_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/edit_user_username"
+                    android:text="Name"
+                    android:layout_marginTop="10dp"
+                    android:textSize="60px" />
+
+                <EditText
+                    android:id="@+id/edit_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5px"
+                    android:paddingRight="5px"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/edit_profile_name_field"
+                    android:text="CX"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+                <TextView
+                    android:id="@+id/edit_profile_surname_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/user_username"
+                    android:text="Surname"
+                    android:layout_marginTop="10dp"
+                    android:textSize="60px" />
+
+                <EditText
+                    android:id="@+id/edit_user_surname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5px"
+                    android:paddingRight="5px"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/edit_profile_surname_field"
+                    android:text="Chen"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/edit_profile_gender_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/user_username"
+                    android:text="Gender"
+                    android:layout_marginTop="10dp"
+                    android:textSize="60px" />
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/edit_gender_m"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Male"
+                        android:textColor="@color/fontColor" />
+
+                    <RadioButton
+                        android:id="@+id/edit_gender_f"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Female"
+                        android:textColor="@color/fontColor" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/edit_profile_contact_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/genderText"
+                    android:layout_marginTop="10dp"
+                    android:text="Contact Number"
+                    android:textSize="60px" />
+
+                <EditText
+                    android:id="@+id/edit_user_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5px"
+                    android:paddingRight="5px"
+                    android:inputType="number"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/edit_profile_contact_field"
+                    android:text="81281282"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/edit_profile_email_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/user_contact"
+                    android:layout_marginTop="10dp"
+                    android:text="Email"
+                    android:textSize="60px" />
+
+                <EditText
+                    android:id="@+id/edit_user_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5px"
+                    android:paddingRight="5px"
+                    android:inputType="textWebEmailAddress"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignTop="@+id/edit_profile_email_field"
+                    android:text="abc_def_ghi@asdfkjh.com"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/edit_profile_addr_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/edit_user_email"
+                    android:layout_marginTop="10dp"
+                    android:text="Address"
+                    android:textSize="60px" />
+
+                <EditText
+                    android:id="@+id/edit_user_addr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5px"
+                    android:paddingRight="5px"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignTop="@+id/edit_profile_addr_field"
+                    android:inputType="textAutoCorrect"
+                    android:text="123 Toa Payoh Lorong 1 #12-01203"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/edit_profile_pot_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/user_addr"
+                    android:layout_marginTop="10dp"
+                    android:text="Preferred Occupational Therapist"
+                    android:textSize="60px" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edit_profile_pot"
+                        android:entries="@array/pot_characters"
+                        android:layout_below="@+id/textView"
+                        android:imeActionId="@+id/registration"
+                        android:imeActionLabel="@string/action_sign_up_short"
+                        android:imeOptions="actionUnspecified"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:textSize="22sp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/edit_profile_mpl_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/user_pot"
+                    android:layout_marginTop="10dp"
+                    android:text="Most Preferred Location"
+                    android:textSize="60px" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edit_profile_mpl"
+                        android:entries="@array/mpl_characters"
+                        android:layout_below="@+id/edit_profile_user_mpl"
+                        android:imeOptions="actionUnspecified"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:textSize="22sp"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -55,6 +55,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
                 //*Set the position of the Toast box to the center of the UI
                 loginToast.setGravity(Gravity.CENTER, 0, 0);
                 loginToast.show();
+                break;
 
 
         }
