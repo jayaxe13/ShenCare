@@ -1,33 +1,46 @@
 package com.shencare.shencaremobile;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-public class VolunteerSignUp extends AppCompatActivity {
+public class VolunteerSignUp extends AppCompatActivity implements View.OnClickListener {
+    private EditText name,email,phone_number, message;
+    private Button volSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_sign_up);
+        volSignUp = (Button)findViewById(R.id.joinVolunteer);
+        volSignUp.setOnClickListener(this);
     }
 
-    public void joinAsVolunteer(View view) {
-        String button_text;
-        button_text = ((Button) view).getText().toString();
-        if(button_text.equals("Join")) {
-            Intent intent = new Intent(this,Home.class);
-            startActivity(intent);
-            //*To show users about login successful message after user is validated successfully
-            //*Here, the Toast.LENGTH_LONG is the lasting time for the toast box. There is also Toast.LENGTH_SHORT and also can set the time to be 2000ms
-            Toast loginToast = Toast.makeText(getBaseContext(), getString(R.string.successMessage), Toast.LENGTH_LONG);
-            //*Set the position of the Toast box to the center of the UI
-            loginToast.setGravity(Gravity.CENTER, 0, 0);
-            loginToast.show();
+    @Override
+    public void onClick(View v) {
+
+        int id = v.getId();
+        switch(id){
+            case R.id.joinVolunteer:
+                startActivity(new Intent(this,Home.class));
+                final Toast volSuccessToast = Toast.makeText(getBaseContext(), getString(R.string.successMessage), Toast.LENGTH_LONG);
+                //*Set the position of the Toast box to the center of the UI
+                volSuccessToast.setGravity(Gravity.CENTER, 0, 0);
+                volSuccessToast.show();
+                new CountDownTimer(4000, 1000)
+                {
+
+                    public void onTick(long millisUntilFinished) {volSuccessToast.show();}
+                    public void onFinish() {volSuccessToast.cancel();}
+
+                }.start();
+                break;
         }
 
     }

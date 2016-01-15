@@ -2,6 +2,7 @@ package com.shencare.shencaremobile;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -51,13 +52,16 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
                 startActivity(new Intent(UserLogin.this, UserProfile.class));
                 //*To show users about login successful message after user is validated successfully
                 //*Here, the Toast.LENGTH_LONG is the lasting time for the toast box. There is also Toast.LENGTH_SHORT and also can set the time to be 2000ms
-                Toast loginToast = Toast.makeText(getBaseContext(), "Welcome to ShenCARE.", Toast.LENGTH_LONG);
+                final Toast loginToast = Toast.makeText(getBaseContext(), "Welcome to ShenCARE.", Toast.LENGTH_LONG);
                 //*Set the position of the Toast box to the center of the UI
                 loginToast.setGravity(Gravity.CENTER, 0, 0);
                 loginToast.show();
+                new CountDownTimer(4000, 1000)
+                {
+                    public void onTick(long millisUntilFinished) {loginToast.show();}
+                    public void onFinish() {loginToast.cancel();}
+                }.start();
                 break;
-
-
         }
     }
 
