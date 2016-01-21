@@ -16,7 +16,6 @@
 
 
     <!-- Registration progress -->
-
     <ScrollView android:id="@+id/registration_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,13 +28,6 @@
             android:orientation="vertical"
             android:paddingTop="20dp">
 
-            <TextView
-                android:id="@+id/regis_name_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/regis_name"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/fontColor" />
 
 
             <AutoCompleteTextView
@@ -57,18 +49,14 @@
                 android:singleLine="true" />
 
 
-            <LinearLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <EditText android:id="@+id/regis_username" android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:hint="Username"
-                    android:inputType="text" android:maxLines="1"
+            <EditText android:id="@+id/regis_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username"
+                    android:inputType="text"
+                    android:maxLines="1"
                     android:singleLine="true" />
-
-            </LinearLayout>
-
-            <LinearLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
                 <EditText android:id="@+id/regis_password" android:layout_width="match_parent"
                     android:layout_height="wrap_content"  android:hint="Password"
@@ -77,25 +65,12 @@
                     android:imeOptions="actionUnspecified" android:inputType="textPassword"
                     android:maxLines="1" android:singleLine="true" />
 
-            </LinearLayout>
-
-            <LinearLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
                 <EditText android:id="@+id/regis_confirmed_password" android:layout_width="match_parent"
                     android:layout_height="wrap_content"  android:hint="Confirm Password"
                     android:imeActionId="@+id/registration"
                     android:imeActionLabel="@string/action_sign_up_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPassword"
                     android:maxLines="1" android:singleLine="true" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/regis_email"
@@ -109,7 +84,6 @@
                     android:maxLines="1"
                     android:singleLine="true" />
 
-
                 <EditText android:id="@+id/regis_telephone" android:layout_width="match_parent"
                     android:layout_height="wrap_content"  android:hint="Telephone Number"
                     android:imeActionId="@+id/registration"
@@ -117,45 +91,70 @@
                     android:imeOptions="actionUnspecified" android:inputType="number"
                     android:maxLines="1" android:singleLine="true" />
 
-            </LinearLayout>
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px">
 
-                <Spinner
+                <TextView
+                    android:id="@+id/regis_pot_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/prompt_pot"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/fontColor"
+                    android:layout_marginTop="10px"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/regis_pot_text"
+                    android:layout_marginTop="10px"
                     android:id="@+id/regis_pot"
                     android:entries="@array/pot_characters"
-                    android:layout_below="@+id/textView"
                     android:imeActionId="@+id/registration"
                     android:imeActionLabel="@string/action_sign_up_short"
                     android:imeOptions="actionUnspecified"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:gravity="center"
                     android:textSize="22sp"/>
 
-            </LinearLayout>
+            </RelativeLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px">
 
-                <Spinner
+                <TextView
+                    android:id="@+id/regis_mpl_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/prompt_mpl"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/fontColor" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/regis_mpl_text"
+                    android:layout_marginTop="10px"
                     android:id="@+id/regis_mpl"
                     android:entries="@array/mpl_characters"
-                    android:layout_below="@+id/textView"
                     android:imeActionId="@+id/registration"
                     android:imeActionLabel="@string/action_sign_up_short"
                     android:imeOptions="actionUnspecified"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:gravity="center"
                     android:textSize="22sp"/>
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -170,6 +169,8 @@
                     android:layout_height="wrap_content"
                     android:checked="false"
                     android:text="I agree with the"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:textColor="#888888"
                     android:textSize = "45px" />
 
@@ -196,7 +197,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="SAVE"
+                    android:text="Submit"
                     android:textStyle="bold" />
 
             </LinearLayout>

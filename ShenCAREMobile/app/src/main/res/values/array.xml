@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="pot_characters">
-        <item> -- Please select preferred occupational therapist--</item>
+        <item>-- Please select one--</item>
         <item>Burns and Plastics Rehabilitation</item>
         <item>Cardiac Rehabilitation</item>
         <item>Children and Youth Assistance</item>
@@ -23,7 +23,7 @@
 
 
     <string-array name="mpl_characters">
-        <item>-- Please select most preferred location--</item>
+        <item>-- Please select one--</item>
         <item>Aljunied</item>
         <item>Ang Mo Kio</item>
         <item>Ayer Rajah</item>

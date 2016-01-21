@@ -58,7 +58,7 @@
                 android:textColor="@color/fontColor" />
 
             <EditText
-                android:id="@+id/vol_editText"
+                android:id="@+id/vol_editName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -76,7 +76,7 @@
 
 
             <EditText
-                android:id="@+id/vol_editText2"
+                android:id="@+id/vol_editEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -94,7 +94,7 @@
                 android:textColor="@color/fontColor" />
 
             <EditText
-                android:id="@+id/vol_editText3"
+                android:id="@+id/vol_editPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -104,40 +104,44 @@
 
 
             <TextView
-                android:id="@+id/vol_textView5"
+                android:id="@+id/vol_freqOfWorkText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/work"
+                android:focusable="true"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/fontColor" />
 
             <RadioGroup
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/freqOfWork">
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/freqOfWork_daily"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Daily"
                     android:textColor="@color/fontColor" />
 
                 <RadioButton
-                    android:id="@+id/radioButton4"
+                    android:id="@+id/freqOfWork_weekly"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Weekly"
                     android:textColor="@color/fontColor" />
 
                 <RadioButton
-                    android:id="@+id/radioButton3"
+                    android:id="@+id/freqOfWork_fortnightly"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fortnightly"
                     android:textColor="@color/fontColor" />
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/freqOfWork_monthly"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Monthly"
@@ -145,28 +149,32 @@
             </RadioGroup>
 
             <TextView
-                android:id="@+id/vol_textView6"
+                android:id="@+id/vol_preferWorkText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="You prefer to work"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:focusable="true"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
                 android:paddingTop="20px"
                 android:textColor="@color/fontColor" />
 
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/preferWorkSize"
                 android:textColor="@color/fontColor">
 
                 <RadioButton
-                    android:id="@+id/radioButton5"
+                    android:id="@+id/preferGroup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="In Groups"
                     android:textColor="@color/fontColor" />
 
                 <RadioButton
-                    android:id="@+id/radioButton6"
+                    android:id="@+id/preferIndividual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="As an Individual"
@@ -174,44 +182,47 @@
             </RadioGroup>
 
             <TextView
-                android:id="@+id/vol_textView7"
+                android:id="@+id/vol_checkBoxes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Please indicate your top three preferred areas to volunteer for "
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:focusable="true"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
                 android:paddingTop="20px"
                 android:textColor="@color/fontColor" />
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/volCheckBox1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Befriending"
                 android:textColor="@color/fontColor" />
 
             <CheckBox
-                android:id="@+id/checkBox4"
+                android:id="@+id/volCheckBox2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Escorts for Medical Appointment"
                 android:textColor="@color/fontColor" />
 
             <CheckBox
-                android:id="@+id/checkBox3"
+                android:id="@+id/volCheckBox3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Excursions"
                 android:textColor="@color/fontColor" />
 
             <CheckBox
-                android:id="@+id/checkBox2"
+                android:id="@+id/volCheckBox4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Spring Cleaning"
                 android:textColor="@color/fontColor" />
 
             <CheckBox
-                android:id="@+id/checkBox5"
+                android:id="@+id/volCheckBox5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Meals Delivery"

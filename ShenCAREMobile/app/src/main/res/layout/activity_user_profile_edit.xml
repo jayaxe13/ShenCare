@@ -130,11 +130,15 @@
                     android:layout_below="@+id/user_username"
                     android:text="Gender"
                     android:layout_marginTop="10dp"
-                    android:textSize="60px" />
+                    android:textSize="60px"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true"/>
 
                 <RadioGroup
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_gender_group">
 
                     <RadioButton
                         android:id="@+id/edit_gender_m"
@@ -232,23 +236,27 @@
                     android:layout_below="@+id/user_addr"
                     android:layout_marginTop="10dp"
                     android:text="Preferred Occupational Therapist"
-                    android:textSize="60px" />
+                    android:textSize="60px"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true"/>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edit_profile_pot_field">
 
                     <Spinner
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/edit_profile_pot"
                         android:entries="@array/pot_characters"
-                        android:layout_below="@+id/textView"
                         android:imeActionId="@+id/registration"
                         android:imeActionLabel="@string/action_sign_up_short"
                         android:imeOptions="actionUnspecified"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
+                        android:gravity="center"
                         android:textSize="22sp"/>
 
                 </LinearLayout>
@@ -262,7 +270,10 @@
                     android:layout_below="@+id/user_pot"
                     android:layout_marginTop="10dp"
                     android:text="Most Preferred Location"
-                    android:textSize="60px" />
+                    android:textSize="60px"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true"/>
 
 
                 <LinearLayout
@@ -270,14 +281,13 @@
                     android:layout_height="wrap_content">
 
                     <Spinner
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edit_profile_mpl"
                         android:entries="@array/mpl_characters"
                         android:layout_below="@+id/edit_profile_user_mpl"
                         android:imeOptions="actionUnspecified"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
+                        android:gravity="center"
                         android:textSize="22sp"/>
 
                 </LinearLayout>

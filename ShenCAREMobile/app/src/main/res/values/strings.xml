@@ -17,8 +17,8 @@
     <string name="regis_pw">Password</string>
     <string name="regis_cpw">Confirm Password</string>
     <string name="regis_email">Email Address</string>
-    <string name="prompt_pot">-- Please select preferred occupational therapist--</string>
-    <string name="prompt_mpl">-- Please select most preferred location--</string>
+    <string name="prompt_pot">Preferred occupational therapist</string>
+    <string name="prompt_mpl">Most preferred location</string>
 
 
     <!--Volunteer Sign Up Function-->
@@ -26,7 +26,7 @@
     <string name="title_activity_login">Sign in</string>
     <string name="name">Y</string>
     <string name="volunteerName">Your Name (Required)</string>
-    <string name="volunteerForm">Volunteer Application Form</string>
+    <string name="volunteerForm">Volunteer Sign Up Form</string>
     <string name="volunteerNameInput"></string>
     <string name="yourEmail">Your Email(Required)</string>
     <string name="volunteerEmailInput"></string>
@@ -36,6 +36,11 @@
     <string name="volunteerLeaveAMessage">Your Message</string>
     <string name="successMessage">Thanks for your participation!</string>
     <string name="vol_join">Join</string>
+
+    <!--Form Validation Message-->
+    <string name="form_contains_err">Please check mandatory fields!</string>
+    <string name="RadioButton">Please select one</string>
+    <string name="Checkbox">Please select at least one</string>
 
     <!--User Profile Function-->
     <string name="editProfileButton">Edit</string>
