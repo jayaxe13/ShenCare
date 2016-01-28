@@ -3,7 +3,6 @@ package com.shencare.shencaremobile;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -13,7 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class UserLogin extends AppCompatActivity implements View.OnClickListener{
+public class UserLogin extends Navigation_drawer implements View.OnClickListener{
     //Nameing the variables
     private TextView signUpLink, changePw;
     private Button loginButton;
@@ -21,7 +20,23 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_login);
+        /**
+         *  We will not use setContentView in this activty
+         *  Rather than we will use layout inflater to add view in FrameLayout of our base activity layout*/
+
+        /**
+         * Adding our layout to parent class frame layout.
+         */
+        getLayoutInflater().inflate(R.layout.activity_user_login, frameLayout);
+
+        /**
+         * Setting title and itemChecked
+         */
+        mDrawerList.setItemChecked(position, true);
+        setTitle("Login");
+        menuCondition = "UserLogin";
+
+
 
         //*Enable this textview to jump to the Registration Activity
         signUpLink = (TextView) findViewById(R.id.regis_link);
@@ -38,6 +53,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
         loginButton = (Button) findViewById(R.id.log_in_button);
         loginButton.setOnClickListener(this);
     }
+
 
     @Override
     public void onClick(View v) {
@@ -64,6 +80,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
                 break;
         }
     }
+
 
     /* private void setSignUpLink(){
         signUpLink.setOnClickListener(new View.OnClickListener() {

@@ -2,7 +2,6 @@ package com.shencare.shencaremobile;
 
 import android.content.Intent;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -15,7 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class UserProfileEdit extends AppCompatActivity implements View.OnClickListener{
+public class UserProfileEdit extends Navigation_drawer implements View.OnClickListener{
     private Button saveButton;
     private EditText name,surname,contact,address,email;
     private TextView radioGender, spinnerPot, spinnerMpl;
@@ -29,7 +28,16 @@ public class UserProfileEdit extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile_edit);
+
+        getLayoutInflater().inflate(R.layout.activity_user_profile_edit, frameLayout);
+
+        /**
+         * Setting title and itemChecked
+         */
+        mDrawerList.setItemChecked(position, true);
+        setTitle("Edit Profile");
+        menuCondition="UserProfileEdit";
+        //Navigation_drawer.setTitle(getTitle().toString());
 
         name = (EditText)findViewById(R.id.edit_user_name);
         surname = (EditText)findViewById(R.id.edit_user_surname);
@@ -46,8 +54,8 @@ public class UserProfileEdit extends AppCompatActivity implements View.OnClickLi
         spinnerMpl =(TextView)findViewById(R.id.edit_profile_mpl_field);
 
 
-        saveButton = (Button) findViewById(R.id.save_profile_button);
-        saveButton.setOnClickListener(this);
+        //saveButton = (Button) findViewById(R.id.save_profile_button);
+        //saveButton.setOnClickListener(this);
 
         doubleCheck();
     }
@@ -58,7 +66,7 @@ public class UserProfileEdit extends AppCompatActivity implements View.OnClickLi
 
         int id = v.getId();
         switch(id){
-            case R.id.save_profile_button:
+            default:
                                 /*
                 Validation class will check the error and display the error on respective fields
                 but it won't resist the form submission, so we need to check again before submit

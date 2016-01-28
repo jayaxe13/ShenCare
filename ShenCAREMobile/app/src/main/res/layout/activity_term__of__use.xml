@@ -6,19 +6,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.shencare.shencaremobile.Term_Of_Use">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/termOfUse_toolbar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/shen"
-        app:title="Term Of Use"
-        app:titleTextColor="@color/toolbarTitleColor"/>
-
     <LinearLayout
         android:id="@+id/termOfUse_body"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/termOfUse_toolbar"
         android:orientation="vertical" >
         <ScrollView android:id="@+id/termOfUse_scrollView"
             android:layout_width="fill_parent"

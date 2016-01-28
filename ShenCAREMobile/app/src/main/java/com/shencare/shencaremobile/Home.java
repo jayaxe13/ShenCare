@@ -1,12 +1,7 @@
 package com.shencare.shencaremobile;
 
 
-import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 
@@ -14,7 +9,7 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class Home extends AppCompatActivity implements View.OnClickListener{
+public class Home extends Navigation_drawer implements View.OnClickListener{
     ImageButton volunteerButton;
     TextView aboutUs,termOfUse;
 
@@ -22,7 +17,22 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        /**
+         *  We will not use setContentView in this activty
+         *  Rather than we will use layout inflater to add view in FrameLayout of our base activity layout*/
+
+        /**
+         * Adding our layout to parent class frame layout.
+         */
+        getLayoutInflater().inflate(R.layout.activity_home, frameLayout);
+
+        /**
+         * Setting title and itemChecked
+         */
+        mDrawerList.setItemChecked(position, true);
+        setTitle("Shencare");
+        menuCondition = "Home";
+        //Navigation_drawer.setTitle(getTitle().toString());
 
         volunteerButton = (ImageButton)findViewById(R.id.volunteerButton);
         volunteerButton.setOnClickListener(this);

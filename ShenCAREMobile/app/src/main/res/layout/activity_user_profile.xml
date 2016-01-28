@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.shencare.shencaremobile.UserProfile">
 
-    <android.support.v7.widget.Toolbar
+   <!-- <android.support.v7.widget.Toolbar
         android:id="@+id/profile_toolbar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -26,11 +26,10 @@
         android:text="Edit"
         android:textAppearance="?android:attr/textAppearanceButton"/>
 
-    </android.support.v7.widget.Toolbar>
+    </android.support.v7.widget.Toolbar> -->
 
     <RelativeLayout
         android:id="@+id/profile_body"
-        android:layout_below="@id/profile_toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="5dp"

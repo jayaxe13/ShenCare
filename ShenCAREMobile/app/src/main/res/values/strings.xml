@@ -45,4 +45,11 @@
     <!--User Profile Function-->
     <string name="editProfileButton">Edit</string>
     <string name="saveProfileButton">Save</string>
+
+    <!--Drawer Test-->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_login">Login</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_save">Save</string>
 </resources>

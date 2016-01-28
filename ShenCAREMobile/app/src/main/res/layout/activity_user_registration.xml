@@ -6,20 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.shencare.shencaremobile.UserRegistration">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/regis_toolbar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/shen"
-        app:title="Registration"
-        app:titleTextColor="@color/toolbarTitleColor"/>
-
 
     <!-- Registration progress -->
     <ScrollView android:id="@+id/registration_scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/regis_toolbar">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/user_registration_form"

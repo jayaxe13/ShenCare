@@ -6,20 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.shencare.shencaremobile.UserLogin">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/login_toolbar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/shen"
-        app:title="@string/title_login"
-        app:titleTextColor="@color/toolbarTitleColor"/>
-
     <!-- Login progress -->
 
     <ScrollView android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/login_toolbar">
+        android:layout_height="match_parent">
 
         <LinearLayout android:id="@+id/username_login_form" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:paddingTop="40dp" android:orientation="vertical">

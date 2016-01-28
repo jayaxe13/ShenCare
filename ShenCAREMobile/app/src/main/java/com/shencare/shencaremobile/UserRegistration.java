@@ -3,7 +3,6 @@ package com.shencare.shencaremobile;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -16,7 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class UserRegistration extends AppCompatActivity implements View.OnClickListener {
+public class UserRegistration extends Navigation_drawer implements View.OnClickListener {
     private EditText regis_name, regis_surname, regis_username,
             regis_pw,regis_cp,regis_email;
     private Button regis_submit;
@@ -29,7 +28,14 @@ public class UserRegistration extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_registration);
+        getLayoutInflater().inflate(R.layout.activity_user_registration, frameLayout);
+
+        /**
+         * Setting title and itemChecked
+         */
+        //mDrawerList.setItemChecked(position, true);
+        setTitle("Registration");
+        menuCondition="UserRegistration";
 
         regis_name =(EditText)findViewById(R.id.regis_name);
         regis_surname = (EditText)findViewById(R.id.regis_surname);

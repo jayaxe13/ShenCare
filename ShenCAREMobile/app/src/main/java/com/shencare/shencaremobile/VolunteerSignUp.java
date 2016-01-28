@@ -2,10 +2,7 @@ package com.shencare.shencaremobile;
 
 import android.content.Intent;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class VolunteerSignUp extends AppCompatActivity implements View.OnClickListener {
+public class VolunteerSignUp extends Navigation_drawer implements View.OnClickListener {
     private TextView vol_freqOfWorkText, vol_preferWorkText,vol_checkBoxes;
     private EditText name,email,phone_number, message;
     private Button volSignUp;
@@ -28,7 +25,16 @@ public class VolunteerSignUp extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_volunteer_sign_up);
+        getLayoutInflater().inflate(R.layout.activity_volunteer_sign_up, frameLayout);
+
+        /**
+         * Setting title and itemChecked
+         */
+        mDrawerList.setItemChecked(position, true);
+        setTitle("Volunteer Sign Up");
+        menuCondition="VolunteerSignUp";
+
+
         //Match all the variables with layout elements
         volSignUp = (Button)findViewById(R.id.joinVolunteer);
         volSignUp.setOnClickListener(this);

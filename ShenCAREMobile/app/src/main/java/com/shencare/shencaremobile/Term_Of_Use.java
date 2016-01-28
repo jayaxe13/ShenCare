@@ -1,15 +1,21 @@
 package com.shencare.shencaremobile;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
-public class Term_Of_Use extends AppCompatActivity {
+public class Term_Of_Use extends Navigation_drawer {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_term__of__use);
+        getLayoutInflater().inflate(R.layout.activity_term__of__use, frameLayout);
+
+        /**
+         * Setting title and itemChecked
+         */
+        mDrawerList.setItemChecked(position, true);
+        setTitle("Term of Use");
+        menuCondition="TermOfUse";
 
         WebView content = (WebView)findViewById(R.id.termOfUse_content);
         String result = getString(R.string.termOfUse_txt);

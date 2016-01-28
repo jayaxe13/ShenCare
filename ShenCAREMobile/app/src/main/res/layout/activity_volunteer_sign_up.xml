@@ -6,19 +6,10 @@
     android:layout_height="match_parent"
     tools:context="com.shencare.shencaremobile.VolunteerSignUp">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/vol_sign_up_toolbar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/shen"
-        app:title="@string/volunteerForm"
-        app:titleTextColor="@color/toolbarTitleColor"/>
-
     <RelativeLayout
         android:id="@+id/vol_head_layout"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/vol_sign_up_toolbar">
+        android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/vol_head_pic"
             android:layout_width="wrap_content"

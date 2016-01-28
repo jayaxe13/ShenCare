@@ -6,4 +6,6 @@
     <color name="shen">#65C7E2</color>
     <color name="fontColor">#000000</color>
     <color name="toolbarTitleColor">#ffffff</color>
+    <color name="drawerList">#a7dded</color>
+    <color name="statusbar">#3fafcf</color>
 </resources>
