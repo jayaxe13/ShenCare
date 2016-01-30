@@ -51,6 +51,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" >
         </activity>
+        <activity android:name=".Events" >
+        </activity>
+        <activity android:name=".ServiceDetails" >
+        </activity>
     </application>
 
 </manifest>

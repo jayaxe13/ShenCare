@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class Home extends Navigation_drawer implements View.OnClickListener{
-    ImageButton volunteerButton;
+    ImageButton volunteerButton, serviceButton, eventButton, shopButton;
     TextView aboutUs,termOfUse;
 
 
@@ -36,6 +36,8 @@ public class Home extends Navigation_drawer implements View.OnClickListener{
 
         volunteerButton = (ImageButton)findViewById(R.id.volunteerButton);
         volunteerButton.setOnClickListener(this);
+        serviceButton = (ImageButton) findViewById(R.id.servicesButton);
+        serviceButton.setOnClickListener(this);
 
         aboutUs = (TextView)findViewById(R.id.aboutUs_text_button);
         termOfUse = (TextView)findViewById(R.id.termOfUse_text_button);
@@ -54,9 +56,9 @@ public class Home extends Navigation_drawer implements View.OnClickListener{
             //case R.id.calendarButton:
                 //startActivity(new Intent(Home.this,Event.class));
                // break;
-            //case R.id.services:
-                //startActivity(new Intent(Home.this, EldercareServices.class));
-                //break;
+            case R.id.servicesButton:
+                startActivity(new Intent(Home.this, ServiceDetails.class));
+                break;
            // case R.id.shopButton:
                // startActivity(new Intent(Home.this, ShoppingActivity.class));
                // break;
