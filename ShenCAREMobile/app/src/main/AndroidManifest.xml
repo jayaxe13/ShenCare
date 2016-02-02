@@ -55,6 +55,12 @@
         </activity>
         <activity android:name=".ServiceDetails" >
         </activity>
+        <activity android:name=".Service_Fragment.ServiceDetails_Profile" >
+        </activity>
+        <activity android:name=".Service_Fragment.ServiceDetails_ProceduresPrices" >
+        </activity>
+        <activity android:name=".Service_Fragment.ServiceDetails_Reviews" >
+        </activity>
     </application>
 
 </manifest>

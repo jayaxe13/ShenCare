@@ -52,4 +52,8 @@
     <string name="action_login">Login</string>
     <string name="action_edit">Edit</string>
     <string name="action_save">Save</string>
+
+    <!--Service Details-->
+    <string name="sd_procedure_and_prices">More information will be provided in the future.</string>
+    <string name="sd_reviews">There are current no reviews available.</string>
 </resources>

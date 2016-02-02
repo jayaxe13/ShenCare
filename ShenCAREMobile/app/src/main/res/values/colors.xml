@@ -8,4 +8,6 @@
     <color name="toolbarTitleColor">#ffffff</color>
     <color name="drawerList">#a7dded</color>
     <color name="statusbar">#3fafcf</color>
+    <color name="unselectedTabColor">#3fafcf</color>
+    <color name="selectedTabColor">#a7dded</color>
 </resources>
