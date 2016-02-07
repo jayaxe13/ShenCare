@@ -1,6 +1,6 @@
 package com.shencare.shencaremobile;
 
-import android.app.AlertDialog;
+import android.support.v7.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.app.Dialog;

@@ -61,6 +61,8 @@
         </activity>
         <activity android:name=".Service_Fragment.ServiceDetails_Reviews" >
         </activity>
+        <activity android:name=".EventDetails" >
+        </activity>
     </application>
 
 </manifest>

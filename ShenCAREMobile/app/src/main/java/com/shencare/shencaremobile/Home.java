@@ -38,6 +38,8 @@ public class Home extends Navigation_drawer implements View.OnClickListener{
         volunteerButton.setOnClickListener(this);
         serviceButton = (ImageButton) findViewById(R.id.servicesButton);
         serviceButton.setOnClickListener(this);
+        eventButton = (ImageButton) findViewById(R.id.calendarButton);
+        eventButton.setOnClickListener(this);
 
         aboutUs = (TextView)findViewById(R.id.aboutUs_text_button);
         termOfUse = (TextView)findViewById(R.id.termOfUse_text_button);
@@ -53,9 +55,9 @@ public class Home extends Navigation_drawer implements View.OnClickListener{
         int id = v.getId();
         switch(id){
             //main 4 buttons
-            //case R.id.calendarButton:
-                //startActivity(new Intent(Home.this,Event.class));
-               // break;
+            case R.id.calendarButton:
+                startActivity(new Intent(Home.this,Events.class));
+                break;
             case R.id.servicesButton:
                 startActivity(new Intent(Home.this, ServiceDetails.class));
                 break;

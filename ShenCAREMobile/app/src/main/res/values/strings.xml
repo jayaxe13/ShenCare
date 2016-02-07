@@ -56,4 +56,12 @@
     <!--Service Details-->
     <string name="sd_procedure_and_prices">More information will be provided in the future.</string>
     <string name="sd_reviews">There are current no reviews available.</string>
+
+    <!--EventDetails-->
+    <string name="eventName">Fun at Marina Barrage</string>
+    <string name="eventDate">10 February 2016</string>
+    <string name="eventTime">1000hrs to 1600hrs</string>
+    <string name="eventVenue">Marina Barrage</string>
+    <string name="eventDetails">Bring your family along and have a day of fun with activities such as
+    kite flying, Chinese chess, Chinese tea appreciation, Storytelling, and much more!!</string>
 </resources>
