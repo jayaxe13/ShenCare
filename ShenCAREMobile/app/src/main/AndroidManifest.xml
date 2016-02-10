@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shencare.shencaremobile" >
 
+    <!--internet permission for getting JSON object-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/sc_launcher"
@@ -55,12 +58,12 @@
         </activity>
         <activity android:name=".ServiceDetails" >
         </activity>
-        <activity android:name=".Service_Fragment.ServiceDetails_Profile" >
+        <!-- <activity android:name=".Service_Fragment.ServiceDetails_Profile" >
         </activity>
         <activity android:name=".Service_Fragment.ServiceDetails_ProceduresPrices" >
         </activity>
         <activity android:name=".Service_Fragment.ServiceDetails_Reviews" >
-        </activity>
+        </activity>-->
         <activity android:name=".EventDetails" >
         </activity>
     </application>

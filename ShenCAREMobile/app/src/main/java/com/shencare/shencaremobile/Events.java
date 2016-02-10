@@ -61,7 +61,7 @@ public class Events extends Navigation_drawer {
         dateDisplay = (TextView) findViewById(R.id.datedisplay);
 
         //perform add events
-        events = addEvents(compactCalendarView);
+        events = addEventsIntoCalendar(compactCalendarView);
         compactCalendarView.invalidate();
         System.out.println("65" + events);
         // below line will display Sunday as the first day of the week
@@ -111,7 +111,7 @@ public class Events extends Navigation_drawer {
         });
     }
 
-    public Map<Date, List<individualEvent>> addEvents(CompactCalendarView compactCalendarView){
+    public Map<Date, List<individualEvent>> addEventsIntoCalendar(CompactCalendarView compactCalendarView){
         Map<Date, List<individualEvent>> tempMap = new HashMap<>();
         eventsMgr.addEvents();
         tempMap = eventsMgr.getMap();
@@ -124,4 +124,7 @@ public class Events extends Navigation_drawer {
         }
         return tempMap;
     }
+
+
+
 }

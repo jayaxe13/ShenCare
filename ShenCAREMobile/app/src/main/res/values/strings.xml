@@ -64,4 +64,10 @@
     <string name="eventVenue">Marina Barrage</string>
     <string name="eventDetails">Bring your family along and have a day of fun with activities such as
     kite flying, Chinese chess, Chinese tea appreciation, Storytelling, and much more!!</string>
+
+    <!--For Json Parsing-->
+    <string name="eventsJSON"></string>
+    <string name="servicesJSON"></string>
+    <string name="usersJSON"></string>
+    <string name="volJSON"></string>
 </resources>

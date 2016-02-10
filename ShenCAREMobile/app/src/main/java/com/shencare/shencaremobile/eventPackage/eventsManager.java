@@ -31,7 +31,7 @@ public class eventsManager {
     }
 
     public void addEvents(){
-        Date firstRecord = dateTrim(formatDate("2016-02-05"));
+        Date firstRecord = formatDate("2016-02-05");
         theEvents.put(firstRecord, createEventList());
     }
     public List<individualEvent> createEventList(){
@@ -69,13 +69,14 @@ public class eventsManager {
         return theEvents;
     }
 
-    public Date dateTrim(Date date){
-        currentCalender.setTime(date);
-        currentCalender.set(Calendar.MILLISECOND, 0);
-        currentCalender.set(Calendar.SECOND, 0);
-        currentCalender.set(Calendar.MINUTE, 0);
-        currentCalender.set(Calendar.HOUR, 0);
+    /* For setting all the timing to midnight, but no need now
+      * public Date dateTrim(Date date){
+      *  currentCalender.setTime(date);
+      *  currentCalender.set(Calendar.MILLISECOND, 0);
+      *  currentCalender.set(Calendar.SECOND, 0);
+      *  currentCalender.set(Calendar.MINUTE, 0);
+      *  currentCalender.set(Calendar.HOUR, 0);
 
-        return currentCalender.getTime();
-    }
+      *  return currentCalender.getTime();
+    }*/
 }
