@@ -1,5 +1,6 @@
 package com.shencare.shencaremobile;
 
+import android.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -31,7 +32,7 @@ import com.shencare.shencaremobile.Service_Fragment.ServiceDetails_Reviews;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class ServiceDetails extends Navigation_drawer implements View.OnClickListener{
+public class ServiceDetails extends FragmentActivity implements View.OnClickListener{
     private TextView serviceProviderName, serviceProviderType;
     private ImageView serviceProviderPhoto;
     private Button bookAppointment;
@@ -48,14 +49,15 @@ public class ServiceDetails extends Navigation_drawer implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getLayoutInflater().inflate(R.layout.activity_service_details, frameLayout);
+        setContentView(R.layout.activity_service_details);
+        //getLayoutInflater().inflate(R.layout.activity_service_details, frameLayout);
 
         /**
          * Setting title and itemChecked
          */
         //mDrawerList.setItemChecked(position, true);
-        setTitle("Service Details");
-        menuCondition="ServiceDetails";
+        //setTitle("Service Details");
+        //menuCondition="ServiceDetails";
 
         serviceProviderPhoto = (ImageView)findViewById(R.id.service_provider_photo);
         serviceProviderName = (TextView)findViewById(R.id.service_provider_name);
@@ -64,12 +66,11 @@ public class ServiceDetails extends Navigation_drawer implements View.OnClickLis
         bookAppointment.setOnClickListener(this);
         mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
-
         mTabHost.addTab(
-                mTabHost.newTabSpec("tab1").setIndicator("Profile", null),
+                mTabHost.newTabSpec("tab1").setIndicator("Profile"),
                 ServiceDetails_Profile.class, null);
         mTabHost.addTab(
-                mTabHost.newTabSpec("tab2").setIndicator("Reviews", null),
+                mTabHost.newTabSpec("tab2").setIndicator("Reviews"),
                 ServiceDetails_Reviews.class, null);
         mTabHost.setCurrentTab(0);
         iniTabColor();
@@ -105,20 +106,20 @@ public class ServiceDetails extends Navigation_drawer implements View.OnClickLis
     public void addTabDecision(){
         if(serviceType.equals("volunteer")){
             mTabHost.addTab(
-                    mTabHost.newTabSpec("tab1").setIndicator("Profile", null),
+                    mTabHost.newTabSpec("tab1").setIndicator("Profile"),
                     ServiceDetails_Profile.class, null);
             mTabHost.addTab(
-                    mTabHost.newTabSpec("tab2").setIndicator("Reviews", null),
+                    mTabHost.newTabSpec("tab2").setIndicator("Reviews"),
                     ServiceDetails_Reviews.class, null);
         }else{
             mTabHost.addTab(
-                    mTabHost.newTabSpec("tab1").setIndicator("Profile", null),
+                    mTabHost.newTabSpec("tab1").setIndicator("Profile"),
                     ServiceDetails_Profile.class, null);
             mTabHost.addTab(
-                    mTabHost.newTabSpec("tab2").setIndicator("Procedures & Prices", null),
+                    mTabHost.newTabSpec("tab2").setIndicator("Procedures & Prices"),
                     ServiceDetails_ProceduresPrices.class, null);
             mTabHost.addTab(
-                    mTabHost.newTabSpec("tab3").setIndicator("Reviews", null),
+                    mTabHost.newTabSpec("tab3").setIndicator("Reviews"),
                     ServiceDetails_Reviews.class, null);
         }
     }

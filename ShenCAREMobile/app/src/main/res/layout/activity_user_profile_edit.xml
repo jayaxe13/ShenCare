@@ -261,7 +261,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/edit_profile_user_mpl"
+                    android:id="@+id/edit_profile_mpl_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -286,7 +286,7 @@
                         android:id="@+id/edit_profile_mpl"
                         android:entries="@array/mpl_characters"
                         android:imeOptions="actionUnspecified"
-                        android:layout_below="@+id/edit_profile_user_mpl"
+                        android:layout_below="@+id/edit_profile_mpl"
                         android:gravity="center"
                         android:textSize="22sp"/>
 

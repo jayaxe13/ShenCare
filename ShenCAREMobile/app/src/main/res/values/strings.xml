@@ -3,7 +3,7 @@
 
     <!--login activity-->
     <string name="title_login">Login</string>
-    <string name="button_login">Login in</string>
+    <string name="button_login">Login</string>
     <string name="prompt_username">Username</string>
     <string name="prompt_password">Password</string>
     <string name="login_username">Username</string>

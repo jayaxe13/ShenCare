@@ -46,7 +46,7 @@ public class UserLogin extends Navigation_drawer implements View.OnClickListener
 
         //*Directly access to the ShenCARE.com's change password webpage.
         changePw = (TextView) findViewById(R.id.forget_pw);
-        changePw.setText(Html.fromHtml("<a href=\"http://www.shencare.com/forgot-password\" >Forget Passwrod</a>"));
+        changePw.setText(Html.fromHtml("<a href=\"http://www.shencare.com/forgot-password\" >Forget Password</a>"));
         changePw.setMovementMethod(LinkMovementMethod.getInstance());
 
         //Login Button

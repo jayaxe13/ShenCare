@@ -1,7 +1,6 @@
 package com.shencare.shencaremobile;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,8 +11,8 @@ import android.widget.TextView;
 
 import com.shencare.shencaremobile.CalendarPackage.CompactCalendarView;
 import com.shencare.shencaremobile.CalendarPackage.domain.CalendarDayEvent;
-import com.shencare.shencaremobile.eventPackage.eventsManager;
-import com.shencare.shencaremobile.eventPackage.individualEvent;
+import com.shencare.shencaremobile.eventPackage.EventsManager;
+import com.shencare.shencaremobile.eventPackage.IndividualEvent;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,12 +24,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+
 public class Events extends Navigation_drawer {
     private Calendar currentCalender = Calendar.getInstance(Locale.getDefault());
     private SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMM - yyyy", Locale.getDefault());
     //using Hashmap to manage the booking records, while the date is the key and a list of booking is the value
-    private eventsManager eventsMgr = new eventsManager();
-    private Map<Date, List<individualEvent>> events = new HashMap<>();
+    private EventsManager eventsMgr = new EventsManager();
+    private Map<Date, List<IndividualEvent>> events = new HashMap<>();
 
 
     private TextView dateDisplay;
@@ -72,12 +72,12 @@ public class Events extends Navigation_drawer {
         compactCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
-                List<individualEvent> eventsFromMap = events.get(dateClicked);
+                List<IndividualEvent> eventsFromMap = events.get(dateClicked);
                 //Log.d("MainActivity", "inside onclick " + dateClicked);
                 if (eventsFromMap != null) {
                     Log.d("MainActivity", eventsFromMap.toString());
                     mutableEvents.clear();
-                    for (individualEvent thisEvent : eventsFromMap) {
+                    for (IndividualEvent thisEvent : eventsFromMap) {
                         mutableEvents.add(thisEvent.getEventName());
                     }
                     // below will remove events
@@ -111,8 +111,8 @@ public class Events extends Navigation_drawer {
         });
     }
 
-    public Map<Date, List<individualEvent>> addEventsIntoCalendar(CompactCalendarView compactCalendarView){
-        Map<Date, List<individualEvent>> tempMap = new HashMap<>();
+    public Map<Date, List<IndividualEvent>> addEventsIntoCalendar(CompactCalendarView compactCalendarView){
+        Map<Date, List<IndividualEvent>> tempMap = new HashMap<>();
         eventsMgr.addEvents();
         tempMap = eventsMgr.getMap();
         Iterator it = tempMap.entrySet().iterator();

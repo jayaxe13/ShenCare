@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by Administrator on 2016/2/6.
  */
-public class individualEvent {
+public class IndividualEvent {
 
     private String eventName;
     private Date eventDate;
@@ -13,7 +13,7 @@ public class individualEvent {
     private String eventVenue;
     private String eventInfo;
 
-    public individualEvent(String name, Date date, String duration,String venue, String info){
+    public IndividualEvent(String name, Date date, String duration, String venue, String info){
         this.eventName = name;
         this.eventDate = date;
         this.eventDuration = duration;

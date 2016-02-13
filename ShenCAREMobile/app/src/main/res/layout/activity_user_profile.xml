@@ -68,7 +68,6 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignTop="@+id/profile_addr_field"
-                    android:text="Azuki"
                     android:gravity="left"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:background="@drawable/profile_text"/>
@@ -93,7 +92,6 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/profile_name_field"
                 android:layout_alignTop="@+id/profile_name_field"
-                android:text="CX"
                 android:gravity="left"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/profile_text"/>
@@ -118,7 +116,6 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/profile_surname_field"
                 android:layout_alignTop="@+id/profile_surname_field"
-                android:text="Chen"
                 android:gravity="left"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/profile_text"/>
@@ -167,7 +164,6 @@
                     android:layout_alignParentLeft="true"
                     android:layout_below="@id/profile_contact_field"
                     android:layout_alignTop="@+id/profile_contact_field"
-                    android:text="+65 81281282"
                     android:gravity="left"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:background="@drawable/profile_text"/>
@@ -190,7 +186,6 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignTop="@+id/profile_email_field"
-                    android:text="abc_def_ghi@asdfkjh.com"
                     android:gravity="left"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:background="@drawable/profile_text"/>
