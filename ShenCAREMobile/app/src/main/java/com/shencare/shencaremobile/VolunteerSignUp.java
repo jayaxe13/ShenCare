@@ -14,6 +14,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.shencare.shencaremobile.volunteerPackage.ShencareVolunteer;
+
 public class VolunteerSignUp extends Navigation_drawer implements View.OnClickListener {
     private TextView vol_freqOfWorkText, vol_preferWorkText,vol_checkBoxes;
     private EditText name,email,phone_number, message;
@@ -21,6 +23,11 @@ public class VolunteerSignUp extends Navigation_drawer implements View.OnClickLi
     private RadioGroup freqOfWork, preferWorkSize;
     private CheckBox volCheckBox1,volCheckBox2,volCheckBox3,volCheckBox4,volCheckBox5;
     private RadioButton freqOfWork_daily,freqOfWork_fortnightly,freqOfWork_weekly, freqOfWork_monthly,preferGroup,preferIndividual;
+    private ShencareVolunteer shencareVolunteer;
+    private String preferredAreaInfo;
+    private String freqOfWorkInfo;
+    private String preferSizeInfo;
+    public static String url = "http://shencare.net/api/user/get_userinfobyname/?username=lawrence";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +55,12 @@ public class VolunteerSignUp extends Navigation_drawer implements View.OnClickLi
         preferWorkSize = (RadioGroup) findViewById(R.id.preferWorkSize);
 
         freqOfWork_daily = (RadioButton) findViewById(R.id.freqOfWork_daily);
+        freqOfWork_fortnightly = (RadioButton)findViewById(R.id.freqOfWork_fortnightly);
+        freqOfWork_weekly = (RadioButton)findViewById(R.id.freqOfWork_weekly);
+        freqOfWork_monthly = (RadioButton)findViewById(R.id.freqOfWork_monthly);
+
         preferGroup = (RadioButton) findViewById(R.id.preferGroup);
+        preferIndividual=(RadioButton)findViewById(R.id.preferIndividual);
 
         volCheckBox1 = (CheckBox) findViewById(R.id.volCheckBox1);
         volCheckBox2 = (CheckBox) findViewById(R.id.volCheckBox2);
@@ -56,6 +68,7 @@ public class VolunteerSignUp extends Navigation_drawer implements View.OnClickLi
         volCheckBox4 = (CheckBox) findViewById(R.id.volCheckBox4);
         volCheckBox5 = (CheckBox) findViewById(R.id.volCheckBox5);
         message = (EditText) findViewById(R.id.vol_msg_box);
+        preferredAreaInfo = "";
 
         doubleCheck();
     }
@@ -130,6 +143,11 @@ public class VolunteerSignUp extends Navigation_drawer implements View.OnClickLi
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
                         vol_checkBoxes.setError(null);
+                        if(preferredAreaInfo.equals("")){
+                           preferredAreaInfo = preferredAreaInfo + volCheckBox1.getText();
+                        }else{
+                            preferredAreaInfo = preferredAreaInfo +", "+ volCheckBox1.getText();
+                        }
                     }
                 }
         });
@@ -138,6 +156,11 @@ public class VolunteerSignUp extends Navigation_drawer implements View.OnClickLi
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     vol_checkBoxes.setError(null);
+                    if(preferredAreaInfo.equals("")){
+                        preferredAreaInfo = preferredAreaInfo + volCheckBox2.getText();
+                    }else{
+                        preferredAreaInfo = preferredAreaInfo +", "+ volCheckBox2.getText();
+                    }
                 }
             }
         });
@@ -145,6 +168,11 @@ public class VolunteerSignUp extends Navigation_drawer implements View.OnClickLi
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     vol_checkBoxes.setError(null);
+                    if(preferredAreaInfo.equals("")){
+                        preferredAreaInfo = preferredAreaInfo + volCheckBox3.getText();
+                    }else{
+                        preferredAreaInfo = preferredAreaInfo +", "+ volCheckBox3.getText();
+                    }
                 }
             }
         });
@@ -152,6 +180,11 @@ public class VolunteerSignUp extends Navigation_drawer implements View.OnClickLi
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     vol_checkBoxes.setError(null);
+                    if(preferredAreaInfo.equals("")){
+                        preferredAreaInfo = preferredAreaInfo + volCheckBox4.getText();
+                    }else{
+                        preferredAreaInfo = preferredAreaInfo +", "+ volCheckBox4.getText();
+                    }
                 }
             }
         });
@@ -159,6 +192,11 @@ public class VolunteerSignUp extends Navigation_drawer implements View.OnClickLi
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     vol_checkBoxes.setError(null);
+                    if(preferredAreaInfo.equals("")){
+                        preferredAreaInfo = preferredAreaInfo + volCheckBox5.getText();
+                    }else{
+                        preferredAreaInfo = preferredAreaInfo +", "+ volCheckBox5.getText();
+                    }
                 }
             }
         });
@@ -168,12 +206,16 @@ public class VolunteerSignUp extends Navigation_drawer implements View.OnClickLi
                 switch (checkedId) {
                     case R.id.freqOfWork_daily:
                         vol_freqOfWorkText.setError(null);
+                        freqOfWorkInfo = freqOfWork_daily.getText().toString();
                     case R.id.freqOfWork_fortnightly:
                         vol_freqOfWorkText.setError(null);
+                        freqOfWorkInfo = freqOfWork_fortnightly.getText().toString();
                     case R.id.freqOfWork_weekly:
                         vol_freqOfWorkText.setError(null);
+                        freqOfWorkInfo = freqOfWork_weekly.getText().toString();
                     case R.id.freqOfWork_monthly:
                         vol_freqOfWorkText.setError(null);
+                        freqOfWorkInfo = freqOfWork_monthly.getText().toString();
                 }
             }
 
@@ -184,12 +226,28 @@ public class VolunteerSignUp extends Navigation_drawer implements View.OnClickLi
                 switch (checkedId) {
                     case R.id.preferGroup:
                         vol_preferWorkText.setError(null);
+                        preferSizeInfo = preferGroup.getText().toString();
                     case R.id.preferIndividual:
                         vol_preferWorkText.setError(null);
+                        preferSizeInfo = preferIndividual.getText().toString();
                 }
             }
 
         });
+    }
+
+    private boolean updateDatabase(){
+        //name,email,phone_number, message;
+        shencareVolunteer = new ShencareVolunteer();
+        String sName = name.getText().toString();
+        String sEmail = email.getText().toString();
+        String sPhone = phone_number.getText().toString();
+        String sMessage = null;
+        if(message.getText() != null){
+            sMessage = message.getText().toString();
+        }
+
+        return true;
     }
 
 }

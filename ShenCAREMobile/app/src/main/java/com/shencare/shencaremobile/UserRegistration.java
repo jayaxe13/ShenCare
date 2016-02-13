@@ -39,7 +39,7 @@ public class UserRegistration extends Navigation_drawer implements View.OnClickL
 
         regis_name =(EditText)findViewById(R.id.regis_name);
         regis_surname = (EditText)findViewById(R.id.regis_surname);
-        regis_username = (EditText)findViewById(R.id.regis_password);
+        regis_username = (EditText)findViewById(R.id.regis_username);
         regis_pw = (EditText) findViewById(R.id.regis_password);
         regis_cp = (EditText)findViewById(R.id.regis_confirmed_password);
         regis_email = (EditText)findViewById(R.id.regis_email);

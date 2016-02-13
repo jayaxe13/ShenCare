@@ -51,12 +51,15 @@ public class WebRequest {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(15001);
             conn.setConnectTimeout(15001);
+             // 发送POST请求必须设置允许输出
+            // 发送POST请求必须设置允许输入
+            // setDoInput的默认值就是true
             conn.setDoInput(true);
             conn.setDoOutput(true);
             if (requestmethod == POSTRequest) {
                 conn.setRequestMethod("POST");
             } else if (requestmethod == GETRequest) {
-                conn.setRequestMethod("GETRequest");
+                conn.setRequestMethod("GET");
             }
 
             if (params != null) {

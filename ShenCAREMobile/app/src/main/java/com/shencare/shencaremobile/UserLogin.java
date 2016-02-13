@@ -8,14 +8,19 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class UserLogin extends Navigation_drawer implements View.OnClickListener{
     //Nameing the variables
     private TextView signUpLink, changePw;
+    private AutoCompleteTextView username;
+    private EditText password;
     private Button loginButton;
+    private String sUsername, sPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,9 @@ public class UserLogin extends Navigation_drawer implements View.OnClickListener
         setTitle("Login");
         menuCondition = "UserLogin";
 
+
+        username = (AutoCompleteTextView)findViewById(R.id.login_username);
+        password = (EditText)findViewById(R.id.login_password);
 
 
         //*Enable this textview to jump to the Registration Activity
@@ -59,35 +67,49 @@ public class UserLogin extends Navigation_drawer implements View.OnClickListener
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
-            // Sign up
+            // When user want to go to the registration page
             case R.id.regis_link:
                 startActivity(new Intent(UserLogin.this, UserRegistration.class));
                 break;
             //case R.id.forget_pw:
             case R.id.log_in_button:
-                startActivity(new Intent(UserLogin.this, UserProfile.class));
-                //*To show users about login successful message after user is validated successfully
-                //*Here, the Toast.LENGTH_LONG is the lasting time for the toast box. There is also Toast.LENGTH_SHORT and also can set the time to be 2000ms
-                final Toast loginToast = Toast.makeText(getBaseContext(), "Welcome to ShenCARE.", Toast.LENGTH_LONG);
-                //*Set the position of the Toast box to the center of the UI
-                loginToast.setGravity(Gravity.CENTER, 0, 0);
-                loginToast.show();
-                new CountDownTimer(4000, 1000)
-                {
-                    public void onTick(long millisUntilFinished) {loginToast.show();}
-                    public void onFinish() {loginToast.cancel();}
-                }.start();
+                //do login checking and store into database here
+                if(loginFunction() == true) {
+                    startActivity(new Intent(UserLogin.this, Home.class));
+                    //*To show users about login successful message after user is validated successfully
+                    //*Here, the Toast.LENGTH_LONG is the lasting time for the toast box. There is also Toast.LENGTH_SHORT and also can set the time to be 2000ms
+                    final Toast loginToast = Toast.makeText(getBaseContext(), "Welcome to ShenCARE.", Toast.LENGTH_LONG);
+                    //*Set the position of the Toast box to the center of the UI
+                    loginToast.setGravity(Gravity.CENTER, 0, 0);
+                    loginToast.show();
+                    new CountDownTimer(4000, 1000)
+                    {
+                        public void onTick(long millisUntilFinished) {loginToast.show();}
+                        public void onFinish() {loginToast.cancel();}
+                    }.start();
+                }else{
+                    final Toast loginFailedToast = Toast.makeText(getBaseContext(), "Please try again", Toast.LENGTH_LONG);
+                    //*Set the position of the Toast box to the center of the UI
+                    loginFailedToast.setGravity(Gravity.CENTER, 0, 0);
+                    loginFailedToast.show();
+                    new CountDownTimer(4000, 1000)
+                    {
+                        public void onTick(long millisUntilFinished) {loginFailedToast.show();}
+                        public void onFinish() {loginFailedToast.cancel();}
+                    }.start();
+                }
                 break;
         }
     }
 
+    private boolean loginFunction(){
+        sUsername = username.getText().toString();
+        sPassword = password.getText().toString();
+        if(sUsername.equals("James") && sPassword.equals("isfun00")){
+            return true;
+        }
+        return false;
+    }
 
-    /* private void setSignUpLink(){
-        signUpLink.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(UserLoginActivity.this, UserRegistrationActivity.class);
-                startActivity(intent);
-            }
-        });
-    } */
+
 }

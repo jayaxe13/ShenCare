@@ -176,7 +176,7 @@
                 android:id="@+id/vol_checkBoxes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Please indicate your top three preferred areas to volunteer for "
+                android:text="Please indicate your preferred areas to volunteer for "
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:focusable="true"
                 android:clickable="true"

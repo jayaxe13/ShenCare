@@ -41,7 +41,7 @@ public class UserProfile extends Navigation_drawer implements View.OnClickListen
         address = (TextView)findViewById(R.id.user_addr);
         pot = (TextView)findViewById(R.id.user_pot);
         mpl = (TextView)findViewById(R.id.user_mpl);
-        //new GetStudents().execute();
+        new GetStudents().execute();
 
     }
 
@@ -56,7 +56,7 @@ public class UserProfile extends Navigation_drawer implements View.OnClickListen
         }
     }
 
-    /*private class GetStudents extends AsyncTask<Void, Void, Void> {
+    private class GetStudents extends AsyncTask<Void, Void, Void> {
 
         // Hashmap for ListView
 //ArrayList<HashMap<String, String>> studentList;
@@ -104,12 +104,12 @@ public class UserProfile extends Navigation_drawer implements View.OnClickListen
 
 //setListAdapter(adapter);
 
-          /* username.setText(tempUser.getUsername());
+            username.setText(tempUser.getUsername());
             surname.setText(tempUser.getSurname());
             name.setText(tempUser.getFirstname());
             email.setText(tempUser.getEmail());
             contact.setText(tempUser.getContactNumber());
 
         }
-    }*/
+    }
 }
