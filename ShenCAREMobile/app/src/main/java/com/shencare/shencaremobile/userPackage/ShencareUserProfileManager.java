@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public class ShencareUserProfileManager {
     // URL to get contacts JSON of one particular user
-    public static String url = "http://shencare.net/api/user/get_userinfobyname/?username=lawrence";
+    public static String url = "http://shencare.net/api/user/get_userinfobyname/?username=";
 
     // JSON Node names
     private static final String TAG_USERNAME = "username";

@@ -37,9 +37,10 @@ public class Navigation_drawer extends AppCompatActivity {
     /**
      * Drawer listner class for drawer open, close etc.
      */
-    private ActionBarDrawerToggle actionBarDrawerToggle;
+    protected ActionBarDrawerToggle actionBarDrawerToggle;
     private static String mActivityTitle;
     protected String menuCondition;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,12 +194,8 @@ public class Navigation_drawer extends AppCompatActivity {
                 return true;
 
             case R.id.action_edit:
-                startActivity(new Intent(this, UserProfileEdit.class));
-                return true;
 
             case R.id.action_save:
-                startActivity(new Intent(this, UserProfile.class));
-                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

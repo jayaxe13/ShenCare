@@ -68,7 +68,6 @@
                     android:paddingRight="5px"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:text="Azuki"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:background="@drawable/profile_text"/>
 
@@ -93,7 +92,6 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_below="@id/edit_profile_name_field"
-                    android:text="CX"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
@@ -117,7 +115,6 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_below="@id/edit_profile_surname_field"
-                    android:text="Chen"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -175,7 +172,6 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_below="@id/edit_profile_contact_field"
-                    android:text="81281282"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -199,7 +195,6 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignTop="@+id/edit_profile_email_field"
-                    android:text="abc_def_ghi@asdfkjh.com"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView

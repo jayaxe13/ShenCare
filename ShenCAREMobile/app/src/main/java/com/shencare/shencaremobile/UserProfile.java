@@ -4,18 +4,27 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.shencare.shencaremobile.Util.SessionManager;
 import com.shencare.shencaremobile.Util.WebRequest;
 import com.shencare.shencaremobile.userPackage.ShencareUser;
 import com.shencare.shencaremobile.userPackage.ShencareUserProfileManager;
 
 public class UserProfile extends Navigation_drawer implements View.OnClickListener {
-    private Button editButton;
+    private Button editButton,logoutButton;
     private TextView username, name, surname, gender,contact,email,address,pot,mpl;
+    private SessionManager session;
+    private String universalUser,sUsername, sName,sSurname,sGender, sContact,sEmail, sAddress, sPot, sMpl;
+    private ShencareUser shencareuser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +38,20 @@ public class UserProfile extends Navigation_drawer implements View.OnClickListen
         setTitle("My Profile");
         menuCondition="UserProfile";
         //Navigation_drawer.setTitle(getTitle().toString());
+        session = new SessionManager(getApplicationContext());
 
-        //editButton = (Button) findViewById(R.id.edit_profile_button);
-        //editButton.setOnClickListener(this);
+        if(!session.isLoggedIn()){
+            //User is already logged in. Take him to home activity
+            Intent intent = new Intent(UserProfile.this, UserLogin.class);
+            startActivity(intent);
+            finish();
+        }else{
+            universalUser = session.getUserDetails();
+            new GetStudents().execute();
+        }
+
+        logoutButton = (Button) findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(this);
         username = (TextView)findViewById(R.id.user_username);
         name = (TextView)findViewById(R.id.user_name);
         surname = (TextView)findViewById(R.id.user_surname);
@@ -41,17 +61,26 @@ public class UserProfile extends Navigation_drawer implements View.OnClickListen
         address = (TextView)findViewById(R.id.user_addr);
         pot = (TextView)findViewById(R.id.user_pot);
         mpl = (TextView)findViewById(R.id.user_mpl);
-        new GetStudents().execute();
 
     }
+
+
 
     @Override
     public void onClick(View v) {
 
         int id = v.getId();
         switch(id){
-            default:
-                startActivity(new Intent(this,UserProfileEdit.class));
+            case R.id.logoutButton:
+                //startActivity(new Intent(UserProfile.this, UserLogin.class));
+                final Toast logout = Toast.makeText(getBaseContext(), R.string.logoutInfo,Toast.LENGTH_LONG);
+                logout.setGravity(Gravity.CENTER, 0, 0);
+                logout.show();
+                new CountDownTimer(3000, 1000) {
+                    public void onTick(long millisUntilFinished) {logout.show();}
+                    public void onFinish() {logout.cancel();}
+                }.start();
+                session.logoutUser();
                 break;
         }
     }
@@ -59,7 +88,7 @@ public class UserProfile extends Navigation_drawer implements View.OnClickListen
     private class GetStudents extends AsyncTask<Void, Void, Void> {
 
         // Hashmap for ListView
-//ArrayList<HashMap<String, String>> studentList;
+        //ArrayList<HashMap<String, String>> studentList;
         ShencareUser tempUser;
         ProgressDialog proDialog;
 
@@ -78,8 +107,9 @@ public class UserProfile extends Navigation_drawer implements View.OnClickListen
             // Creating service handler class instance
             WebRequest webreq = new WebRequest();
 
+            String urlForUser = ShencareUserProfileManager.url + universalUser.trim();
              // Making a request to url and getting response
-            String jsonStr = webreq.makeWebServiceCall(ShencareUserProfileManager.url, WebRequest.GETRequest);
+            String jsonStr = webreq.makeWebServiceCall(urlForUser, WebRequest.GETRequest);
 
             Log.d("Response: ", "> " + jsonStr);//null here
 
@@ -93,23 +123,57 @@ public class UserProfile extends Navigation_drawer implements View.OnClickListen
             // Dismiss the progress dialog
             if (proDialog.isShowing())
                 proDialog.dismiss();
-/**
- * Updating received data from JSON into userprofile
- * */
-//ListAdapter adapter = new SimpleAdapter(
-//MainActivity.this, studentList,
-//R.layout.list_item, new String[]{TAG_STUDENT_NAME, TAG_EMAIL,
-//TAG_STUDENT_PHONE_MOBILE}, new int[]{R.id.name,
-//R.id.email, R.id.mobile});
+        /**
+        * Updating received data from JSON into userprofile
+        * */
+        //ListAdapter adapter = new SimpleAdapter(
+        //MainActivity.this, studentList,
+        //R.layout.list_item, new String[]{TAG_STUDENT_NAME, TAG_EMAIL,
+        //TAG_STUDENT_PHONE_MOBILE}, new int[]{R.id.name,
+        //R.id.email, R.id.mobile});
 
-//setListAdapter(adapter);
+        //setListAdapter(adapter);
 
             username.setText(tempUser.getUsername());
             surname.setText(tempUser.getSurname());
             name.setText(tempUser.getFirstname());
             email.setText(tempUser.getEmail());
             contact.setText(tempUser.getContactNumber());
+            //get parameters for passing to the userProfileEdit page
+            sUsername = tempUser.getUsername();
+            sName = tempUser.getFirstname();
+            sSurname = tempUser.getSurname();
+            sContact = tempUser.getContactNumber();
+            sEmail = tempUser.getEmail();
 
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // The action bar home/up action should open or close the drawer.
+        // ActionBarDrawerToggle will take care of this.
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        switch (item.getItemId()) {
+
+            case R.id.action_edit:
+                //Start Intend to UserProfileEdit class and pass the ShencareUser object to the UserProfileEdit class
+                Intent intentUserProfile = new Intent(this, UserProfileEdit.class);
+                intentUserProfile.putExtra("username", sUsername);
+                intentUserProfile.putExtra("firstname", sName);
+                intentUserProfile.putExtra("surname", sSurname);
+                intentUserProfile.putExtra("contact", sContact);
+                intentUserProfile.putExtra("email",sEmail);
+                startActivity(intentUserProfile);
+                return true;
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }

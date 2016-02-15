@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -14,14 +15,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.shencare.shencaremobile.userPackage.ShencareUser;
+
 public class UserProfileEdit extends Navigation_drawer implements View.OnClickListener{
     private Button saveButton;
-    private EditText name,surname,contact,address,email;
-    private TextView radioGender, spinnerPot, spinnerMpl;
+    private EditText  name,surname,contact,address,email;
+    private TextView username, radioGender, spinnerPot, spinnerMpl;
     private RadioGroup editGender;
     private RadioButton male, female;
     private Spinner edit_pot, edit_mpl;
     private String selected_pot, selected_mpl;
+    private ShencareUser shencareUser;
+    private Intent intentReceiver;
 
 
 
@@ -38,12 +43,20 @@ public class UserProfileEdit extends Navigation_drawer implements View.OnClickLi
         setTitle("Edit Profile");
         menuCondition="UserProfileEdit";
         //Navigation_drawer.setTitle(getTitle().toString());
+        //In process getting user information from UserProfile Class
+        intentReceiver = getIntent();
 
+        username =(TextView)findViewById(R.id.edit_user_username);
+        username.setText(intentReceiver.getStringExtra("username"));
         name = (EditText)findViewById(R.id.edit_user_name);
+        name.setText(intentReceiver.getStringExtra("firstname"));
         surname = (EditText)findViewById(R.id.edit_user_surname);
+        surname.setText(intentReceiver.getStringExtra("surname"));
         contact = (EditText)findViewById(R.id.edit_user_contact);
+        contact.setText(intentReceiver.getStringExtra("contact"));
         address = (EditText)findViewById(R.id.edit_user_addr);
         email = (EditText) findViewById(R.id.edit_user_email);
+        email.setText(intentReceiver.getStringExtra("email"));
         editGender = (RadioGroup) findViewById(R.id.edit_gender_group);
         male = (RadioButton)findViewById(R.id.edit_gender_m);
         female = (RadioButton) findViewById(R.id.edit_gender_f);
@@ -67,22 +80,25 @@ public class UserProfileEdit extends Navigation_drawer implements View.OnClickLi
         int id = v.getId();
         switch(id){
             default:
-                                /*
+                break;
+        }
+    }
+
+    public void changeSavingProcessing(){
+        /*
                 Validation class will check the error and display the error on respective fields
                 but it won't resist the form submission, so we need to check again before submit
                 * */
-                if(checkValidation()){
-                    submitProfileChange();
-                }else{
-                    final Toast submitProfile = Toast.makeText(getBaseContext(), R.string.form_contains_err,Toast.LENGTH_LONG);
-                    submitProfile.setGravity(Gravity.CENTER, 0, 0);
-                    submitProfile.show();
-                    new CountDownTimer(4000, 1000) {
-                        public void onTick(long millisUntilFinished) {submitProfile.show();}
-                        public void onFinish() {submitProfile.cancel();}
-                    }.start();
-                }
-                break;
+        if(checkValidation()){
+            submitProfileChange();
+        }else{
+            final Toast submitProfile = Toast.makeText(getBaseContext(), R.string.form_contains_err,Toast.LENGTH_LONG);
+            submitProfile.setGravity(Gravity.CENTER, 0, 0);
+            submitProfile.show();
+            new CountDownTimer(4000, 1000) {
+                public void onTick(long millisUntilFinished) {submitProfile.show();}
+                public void onFinish() {submitProfile.cancel();}
+            }.start();
         }
     }
 
@@ -104,18 +120,20 @@ public class UserProfileEdit extends Navigation_drawer implements View.OnClickLi
 
     private void submitProfileChange(){
         //Submit your form here if your form is valid
-        startActivity(new Intent(this,UserProfile.class));
         final Toast editProfileToast = Toast.makeText(getBaseContext(), "Changed has been saved.", Toast.LENGTH_LONG);
         //*Set the position of the Toast box to the center of the UI
         editProfileToast.setGravity(Gravity.CENTER, 0, 0);
         editProfileToast.show();
-        new CountDownTimer(4000, 1000)
+        new CountDownTimer(3000, 1000)
         {
 
             public void onTick(long millisUntilFinished) {editProfileToast.show();}
-            public void onFinish() {editProfileToast.cancel();}
+            public void onFinish() {editProfileToast.cancel();
+            }
 
         }.start();
+        startActivity(new Intent(this, UserProfile.class));
+        finish();
     }
 
     public void doubleCheck(){
@@ -168,5 +186,29 @@ public class UserProfileEdit extends Navigation_drawer implements View.OnClickLi
 
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // The action bar home/up action should open or close the drawer.
+        // ActionBarDrawerToggle will take care of this.
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        switch (item.getItemId()) {
+
+            case R.id.action_save:
+                changeSavingProcessing();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void updateUserProfile(){
+
+    }
+
 
 }

@@ -64,10 +64,14 @@
     <string name="eventVenue">Marina Barrage</string>
     <string name="eventDetails">Bring your family along and have a day of fun with activities such as
     kite flying, Chinese chess, Chinese tea appreciation, Storytelling, and much more!!</string>
+    <string name="bookEventWarning">You have to login first</string>
 
     <!--For Json Parsing-->
     <string name="eventsJSON"></string>
     <string name="servicesJSON"></string>
     <string name="usersJSON"></string>
     <string name="volJSON"></string>
+
+    <!--Logout Info-->
+    <string name="logoutInfo">You have successfully logged out</string>
 </resources>

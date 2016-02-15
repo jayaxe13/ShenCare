@@ -14,6 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.shencare.shencaremobile.Util.SessionManager;
 import com.shencare.shencaremobile.volunteerPackage.ShencareVolunteer;
 
 public class VolunteerSignUp extends Navigation_drawer implements View.OnClickListener {
@@ -24,10 +25,9 @@ public class VolunteerSignUp extends Navigation_drawer implements View.OnClickLi
     private CheckBox volCheckBox1,volCheckBox2,volCheckBox3,volCheckBox4,volCheckBox5;
     private RadioButton freqOfWork_daily,freqOfWork_fortnightly,freqOfWork_weekly, freqOfWork_monthly,preferGroup,preferIndividual;
     private ShencareVolunteer shencareVolunteer;
-    private String preferredAreaInfo;
-    private String freqOfWorkInfo;
-    private String preferSizeInfo;
-    public static String url = "http://shencare.net/api/user/get_userinfobyname/?username=lawrence";
+    private String preferredAreaInfo,freqOfWorkInfo,preferSizeInfo;
+   private SessionManager session;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +39,16 @@ public class VolunteerSignUp extends Navigation_drawer implements View.OnClickLi
          */
         mDrawerList.setItemChecked(position, true);
         setTitle("Volunteer Sign Up");
-        menuCondition="VolunteerSignUp";
 
+
+        session = new SessionManager(getApplicationContext());
+
+        if(session.isLoggedIn()){
+            //User is already logged in. Hide the login button
+            menuCondition = "UserLogin";
+        }else{
+            menuCondition="VolunteerSignUp";
+        }
 
         //Match all the variables with layout elements
         volSignUp = (Button)findViewById(R.id.joinVolunteer);
@@ -90,7 +98,7 @@ public class VolunteerSignUp extends Navigation_drawer implements View.OnClickLi
                     final Toast submitVolForm = Toast.makeText(getBaseContext(), R.string.form_contains_err,Toast.LENGTH_LONG);
                     submitVolForm.setGravity(Gravity.CENTER, 0, 0);
                     submitVolForm.show();
-                    new CountDownTimer(4000, 1000) {
+                    new CountDownTimer(3000, 1000) {
                         public void onTick(long millisUntilFinished) {submitVolForm.show();}
                         public void onFinish() {submitVolForm.cancel();}
                     }.start();
@@ -131,10 +139,12 @@ public class VolunteerSignUp extends Navigation_drawer implements View.OnClickLi
         //*Set the position of the Toast box to the center of the UI
         volSuccessToast.setGravity(Gravity.CENTER, 0, 0);
         volSuccessToast.show();
-        new CountDownTimer(4000, 1000) {
+        new CountDownTimer(3000, 1000) {
             public void onTick(long millisUntilFinished) {volSuccessToast.show();}
             public void onFinish() {volSuccessToast.cancel();}
         }.start();
+        startActivity(new Intent(this, Home.class));
+        finish();
     }
 
     //Enable the alert to disappear after the button is being clicked
@@ -247,6 +257,10 @@ public class VolunteerSignUp extends Navigation_drawer implements View.OnClickLi
             sMessage = message.getText().toString();
         }
 
+        //preferredAreaInfo
+        //preferSizeInfo
+        //preferWorkSize
+        //sendVolEmail(sName,sEmail,sPhone, sMessage, PreferredAreaInfo, preferSizeInfo, preferWorkSize)
         return true;
     }
 

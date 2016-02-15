@@ -54,9 +54,11 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" >
         </activity>
-        <activity android:name=".Events" >
+        <activity android:name=".Events"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ServiceDetails" >
+        <activity android:name=".ServiceDetails"
+            android:screenOrientation="portrait">
         </activity>
         <!-- <activity android:name=".Service_Fragment.ServiceDetails_Profile" >
         </activity>
@@ -64,7 +66,8 @@
         </activity>
         <activity android:name=".Service_Fragment.ServiceDetails_Reviews" >
         </activity>-->
-        <activity android:name=".EventDetails" >
+        <activity android:name=".EventDetails"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

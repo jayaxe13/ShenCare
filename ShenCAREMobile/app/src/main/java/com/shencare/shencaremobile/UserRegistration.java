@@ -14,15 +14,27 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
+import android.util.Log;
+
+import com.shencare.shencaremobile.Util.SessionManager;
+import com.shencare.shencaremobile.Util.WebRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class UserRegistration extends Navigation_drawer implements View.OnClickListener {
     private EditText regis_name, regis_surname, regis_username,
-            regis_pw,regis_cp,regis_email;
+            regis_pw,regis_cp,regis_email, regis_telephone;
     private Button regis_submit;
     private Spinner regis_pot, regis_mpl;
-    private String selected_pot, selected_mpl;
+    private String selected_pot, selected_mpl, new_name, new_surname,
+            new_username, new_pw, new_email, display_name, urlx, pref_ot, location, telephone, pref, loc, x, y, nonce;
     private TextView termOfUseView,regis_pot_text, regis_mpl_text;
     private CheckBox checkAgree;
+    private SessionManager session;
+    private int temp1, temp2;
 
 
     @Override
@@ -43,6 +55,7 @@ public class UserRegistration extends Navigation_drawer implements View.OnClickL
         regis_pw = (EditText) findViewById(R.id.regis_password);
         regis_cp = (EditText)findViewById(R.id.regis_confirmed_password);
         regis_email = (EditText)findViewById(R.id.regis_email);
+        regis_telephone = (EditText)findViewById(R.id.regis_telephone);
 
         regis_pot = (Spinner) findViewById(R.id.regis_pot);
         regis_mpl = (Spinner) findViewById(R.id.regis_mpl);
@@ -57,6 +70,14 @@ public class UserRegistration extends Navigation_drawer implements View.OnClickL
 
         regis_submit = (Button) findViewById(R.id.registration_button);
         regis_submit.setOnClickListener(this);
+        session = new SessionManager(getApplicationContext());
+
+        if(session.isLoggedIn()){
+            //User is already logged in. Take him to home activity
+            Intent intent = new Intent(UserRegistration.this, Home.class);
+            startActivity(intent);
+            finish();
+        }
 
         doubleCheck();
     }
@@ -68,6 +89,7 @@ public class UserRegistration extends Navigation_drawer implements View.OnClickL
             // term of use
             case R.id.regis_term:
                 startActivity(new Intent(UserRegistration.this, Term_Of_Use.class));
+                finish();
                 break;
             //Register
             case R.id.registration_button:
@@ -76,12 +98,15 @@ public class UserRegistration extends Navigation_drawer implements View.OnClickL
                 but it won't resist the form submission, so we need to check again before submit
                 * */
                 if(checkValidation()){
+                    new GetNonce().execute();
+                    getRegistrationFields();
+                    new PostRegistration().execute();
                     submitRegisForm();
                 }else{
                     final Toast submitRegisForm = Toast.makeText(getBaseContext(), R.string.form_contains_err,Toast.LENGTH_LONG);
                     submitRegisForm.setGravity(Gravity.CENTER, 0, 0);
                     submitRegisForm.show();
-                    new CountDownTimer(4000, 1000) {
+                    new CountDownTimer(3000, 1000) {
                         public void onTick(long millisUntilFinished) {submitRegisForm.show();}
                         public void onFinish() {submitRegisForm.cancel();}
                     }.start();
@@ -107,16 +132,17 @@ public class UserRegistration extends Navigation_drawer implements View.OnClickL
 
     private void submitRegisForm(){
         //Submit your form here if your form is valid
-        startActivity(new Intent(this,UserLogin.class));
         final Toast registrationToast = Toast.makeText(getBaseContext(), "Registered Successfully.", Toast.LENGTH_LONG);
         //*Set the position of the Toast box to the center of the UI
         registrationToast.setGravity(Gravity.CENTER, 0, 0);
         registrationToast.show();
-        new CountDownTimer(4000, 1000)
+        new CountDownTimer(3000, 1000)
         {
             public void onTick(long millisUntilFinished) {registrationToast.show();}
             public void onFinish() {registrationToast.cancel();}
         }.start();
+        startActivity(new Intent(this, UserLogin.class));
+        finish();
     }
 
     //method for dropdown list validation
@@ -183,6 +209,142 @@ public class UserRegistration extends Navigation_drawer implements View.OnClickL
                 }
             }
         });
+    }
+
+    private class GetNonce extends AsyncTask<Void, Void, Void> {
+
+        ProgressDialog proDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Showing progress loading dialog
+            proDialog = new ProgressDialog(UserRegistration.this);
+            proDialog.setMessage("Loading...");
+            proDialog.setCancelable(false);
+            proDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0){
+            WebRequest webreqNonce = new WebRequest();
+
+            String jsonStr = webreqNonce.makeWebServiceCall("http://shencare.net/api/get_nonce/?controller=user&method=register", WebRequest.GETRequest);
+
+            Log.d("Response: ", "> " + jsonStr);//null
+
+            final String TAG_NONCE = "nonce";
+
+            if (jsonStr != null) {
+                try {
+                    //ShencareUser su = new ShencareUser();
+                    JSONObject jsonNonce = new JSONObject(jsonStr);
+
+                    nonce = jsonNonce.getString(TAG_NONCE);
+
+                    //su = new ShencareUser(sUsername, sSurname, sLastname, sEmail, sContact);
+                    return null;
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            } else {
+                Log.e("ServiceHandler", "No data received from HTTP request");
+                return null;
+            }
+
+
+            // return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void requestresult) {
+            super.onPostExecute(requestresult);
+            // Dismiss the progress dialog
+            if (proDialog.isShowing())
+                proDialog.dismiss();
+
+        }
+    }
+
+    private class PostRegistration extends AsyncTask<Void, Void, Void>{
+
+        //ShencareUser tempUser;
+        ProgressDialog proDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Showing progress loading dialog
+            proDialog = new ProgressDialog(UserRegistration.this);
+            proDialog.setMessage("Loading...");
+            proDialog.setCancelable(false);
+            proDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            // Creating service handler class instance
+            WebRequest webreq = new WebRequest();
+
+            //String url = "http://shencare.net/api/user/register/?nonce=c8e10c5b9e&username=" + regis_username + "&email=" + regis_email + "&user_pass=" + regis_pw + "&firstname=" + regis_name + "&lastname=" + regis_surname;
+            urlx ="http://shencare.net/api/user/register_new_user/?nonce="+nonce+"&username="
+                    +new_username+"&email="+new_email+"&user_pass="+new_pw+"&firstname="+new_name
+                    +"&lastname="+new_surname+"&display_name="+display_name+"&telephone="+telephone
+                    +"&pref_ot="+pref+"&location="+loc+"";
+            // Making a request to url and getting response
+            webreq.makeWebServiceCall(urlx, WebRequest.POSTRequest);
+
+            //Log.d("Response: ", "> " + jsonStr);//null here
+
+            //tempUser = ShencareUserProfileManager.ParseJSON(jsonStr);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void requestresult) {
+            super.onPostExecute(requestresult);
+            // Dismiss the progress dialog
+            if (proDialog.isShowing())
+                proDialog.dismiss();
+        }
+    }
+
+    private void getRegistrationFields(){
+        new_name = regis_name.getText().toString();
+        new_surname = regis_surname.getText().toString();
+        new_username = regis_username.getText().toString();
+        new_pw = regis_pw.getText().toString();
+        new_email = regis_email.getText().toString();
+        display_name = new_name;
+        pref_ot = regis_pot.getSelectedItem().toString();
+        location = regis_mpl.getSelectedItem().toString();
+        telephone = regis_telephone.getText().toString();
+
+
+        String[] termlist = getResources().getStringArray(R.array.unsorted_terms);
+
+        for (int i=0; i<termlist.length -1; i++){
+            if(pref_ot.toLowerCase().trim().equals(termlist[i].toLowerCase().trim())){
+                temp2 = i+3;
+                pref = Integer.toString(temp2);
+                Log.d("Fields: ", ">" + termlist[i]);
+            }
+        }
+
+        for (int j=0; j<termlist.length -1; j++){
+            if(location.toLowerCase().trim().equals(termlist[j].toLowerCase().trim())){
+                temp1 = j+3;
+                loc = Integer.toString(temp1);
+                Log.d("Fields: ", ">" + termlist[j]);
+            }
+
+        }
+
+        Log.d("Fields: ", ">" + temp1);
+        Log.d("Fields: ", ">" + location);
+        Log.d("Fields: ", ">" + pref);
+        Log.d("Fields: ", ">" + '"' + pref_ot + '"');
 
     }
 

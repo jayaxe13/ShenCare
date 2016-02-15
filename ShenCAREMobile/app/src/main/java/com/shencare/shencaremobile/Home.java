@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class Home extends Navigation_drawer implements View.OnClickListener{
-    ImageButton volunteerButton, serviceButton, eventButton, shopButton;
-    TextView aboutUs,termOfUse;
+import com.shencare.shencaremobile.Util.SessionManager;
 
+public class Home extends Navigation_drawer implements View.OnClickListener{
+    private ImageButton volunteerButton, serviceButton, eventButton, shopButton;
+    private TextView aboutUs,termOfUse;
+    private SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +33,17 @@ public class Home extends Navigation_drawer implements View.OnClickListener{
          */
         mDrawerList.setItemChecked(position, true);
         setTitle("Shencare");
-        menuCondition = "Home";
+
         //Navigation_drawer.setTitle(getTitle().toString());
 
+        session = new SessionManager(getApplicationContext());
+
+        if(session.isLoggedIn()){
+            //User is already logged in. Hide the login button
+            menuCondition = "UserLogin";
+        }else{
+            menuCondition = "Home";
+        }
         volunteerButton = (ImageButton)findViewById(R.id.volunteerButton);
         volunteerButton.setOnClickListener(this);
         serviceButton = (ImageButton) findViewById(R.id.servicesButton);

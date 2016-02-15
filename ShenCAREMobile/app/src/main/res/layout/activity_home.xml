@@ -11,8 +11,7 @@
         android:id="@+id/headphoto"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:orientation="vertical"
-        android:background="@android:color/white" >
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imageView"
@@ -50,7 +49,7 @@
                     <ImageButton
                         android:id="@+id/shopButton"
                         android:layout_width="135dp"
-                        android:layout_height="135dp"
+                        android:layout_height="160dp"
                         android:layout_alignTop="@+id/servicesButton"
 
                         android:layout_marginStart="38dp"
@@ -61,10 +60,10 @@
                     <ImageButton
                         android:id="@+id/servicesButton"
                         android:layout_width="135dp"
-                        android:layout_height="135dp"
+                        android:layout_height="160dp"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="0dp"
                         android:layout_marginEnd="27dp"
                         android:layout_marginRight="27dp"
                         android:clickable="true"
@@ -74,8 +73,8 @@
                     <ImageButton
                         android:id="@+id/volunteerButton"
                         android:layout_width="135dp"
-                        android:layout_height="135dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_height="160dp"
+                        android:layout_marginTop="0dp"
                         android:layout_alignRight="@+id/shopButton"
                         android:layout_below="@+id/shopButton"
                         android:background="@drawable/volunteericon" />
@@ -83,8 +82,8 @@
                     <ImageButton
                         android:id="@+id/eventButton"
                         android:layout_width="135dp"
-                        android:layout_height="135dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_height="160dp"
+                        android:layout_marginTop="0dp"
                         android:layout_marginRight="27dp"
                         android:layout_alignLeft="@+id/servicesButton"
                         android:layout_below="@+id/servicesButton"

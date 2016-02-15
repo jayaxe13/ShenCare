@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.shencare.shencaremobile.Util.SessionManager;
+
+
 public class UserLogin extends Navigation_drawer implements View.OnClickListener{
     //Nameing the variables
     private TextView signUpLink, changePw;
@@ -21,6 +24,7 @@ public class UserLogin extends Navigation_drawer implements View.OnClickListener
     private EditText password;
     private Button loginButton;
     private String sUsername, sPassword;
+    private SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,16 @@ public class UserLogin extends Navigation_drawer implements View.OnClickListener
         //Login Button
         loginButton = (Button) findViewById(R.id.log_in_button);
         loginButton.setOnClickListener(this);
+
+        session = new SessionManager(getApplicationContext());
+
+        if(session.isLoggedIn()){
+            //User is already logged in. Take him to home activity
+            Intent intent = new Intent(UserLogin.this, Home.class);
+            startActivity(intent);
+            finish();
+        }
+
     }
 
 
@@ -75,6 +89,8 @@ public class UserLogin extends Navigation_drawer implements View.OnClickListener
             case R.id.log_in_button:
                 //do login checking and store into database here
                 if(loginFunction() == true) {
+                    //Create login session
+                    session.setLogin(true,sUsername);
                     startActivity(new Intent(UserLogin.this, Home.class));
                     //*To show users about login successful message after user is validated successfully
                     //*Here, the Toast.LENGTH_LONG is the lasting time for the toast box. There is also Toast.LENGTH_SHORT and also can set the time to be 2000ms
@@ -82,17 +98,20 @@ public class UserLogin extends Navigation_drawer implements View.OnClickListener
                     //*Set the position of the Toast box to the center of the UI
                     loginToast.setGravity(Gravity.CENTER, 0, 0);
                     loginToast.show();
-                    new CountDownTimer(4000, 1000)
+                    new CountDownTimer(3000, 1000)
                     {
                         public void onTick(long millisUntilFinished) {loginToast.show();}
                         public void onFinish() {loginToast.cancel();}
                     }.start();
+                    session.setLogin(true, sUsername);
+                    startActivity(new Intent(UserLogin.this, Home.class));
+                    finish();
                 }else{
                     final Toast loginFailedToast = Toast.makeText(getBaseContext(), "Please try again", Toast.LENGTH_LONG);
                     //*Set the position of the Toast box to the center of the UI
                     loginFailedToast.setGravity(Gravity.CENTER, 0, 0);
                     loginFailedToast.show();
-                    new CountDownTimer(4000, 1000)
+                    new CountDownTimer(3000, 1000)
                     {
                         public void onTick(long millisUntilFinished) {loginFailedToast.show();}
                         public void onFinish() {loginFailedToast.cancel();}
@@ -105,7 +124,7 @@ public class UserLogin extends Navigation_drawer implements View.OnClickListener
     private boolean loginFunction(){
         sUsername = username.getText().toString();
         sPassword = password.getText().toString();
-        if(sUsername.equals("James") && sPassword.equals("isfun00")){
+        if(sUsername.equals("Lawrence") && sPassword.equals("isfun00")){
             return true;
         }
         return false;

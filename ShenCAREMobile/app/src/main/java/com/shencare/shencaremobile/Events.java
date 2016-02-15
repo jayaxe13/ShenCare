@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.shencare.shencaremobile.CalendarPackage.CompactCalendarView;
 import com.shencare.shencaremobile.CalendarPackage.domain.CalendarDayEvent;
+import com.shencare.shencaremobile.Util.SessionManager;
 import com.shencare.shencaremobile.eventPackage.EventsManager;
 import com.shencare.shencaremobile.eventPackage.IndividualEvent;
 
@@ -31,7 +32,7 @@ public class Events extends Navigation_drawer {
     //using Hashmap to manage the booking records, while the date is the key and a list of booking is the value
     private EventsManager eventsMgr = new EventsManager();
     private Map<Date, List<IndividualEvent>> events = new HashMap<>();
-
+    private SessionManager session;
 
     private TextView dateDisplay;
 
@@ -45,7 +46,16 @@ public class Events extends Navigation_drawer {
          */
         //mDrawerList.setItemChecked(position, true);
         setTitle("Senior Living");
-        menuCondition = "ElderlyEvents";
+
+
+        session = new SessionManager(getApplicationContext());
+
+        if(session.isLoggedIn()){
+            //User is already logged in. Hide the login button
+            menuCondition = "UserLogin";
+        }else{
+            menuCondition = "ElderlyEvents";
+        }
 
         final List<String> mutableEvents = new ArrayList<>();
 

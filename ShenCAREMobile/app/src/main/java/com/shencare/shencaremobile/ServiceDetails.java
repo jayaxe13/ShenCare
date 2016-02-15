@@ -28,11 +28,12 @@ import android.support.v4.app.FragmentTabHost;
 import com.shencare.shencaremobile.Service_Fragment.ServiceDetails_ProceduresPrices;
 import com.shencare.shencaremobile.Service_Fragment.ServiceDetails_Profile;
 import com.shencare.shencaremobile.Service_Fragment.ServiceDetails_Reviews;
+import com.shencare.shencaremobile.Util.SessionManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class ServiceDetails extends FragmentActivity implements View.OnClickListener{
+public class ServiceDetails extends Navigation_drawer implements View.OnClickListener{
     private TextView serviceProviderName, serviceProviderType;
     private ImageView serviceProviderPhoto;
     private Button bookAppointment;
@@ -42,6 +43,7 @@ public class ServiceDetails extends FragmentActivity implements View.OnClickList
     private String confirmationMsg;
     private FragmentTabHost mTabHost;
     private String serviceType;
+    private SessionManager session;
     //private static final int DATE_DIALOG_ID = 0; ignore this line
     //private static final int TIME_DIALOG_ID= 1; ignore this line
     //private static final int REASON_FOR_VISIT_VIEW = 2; ignore this line
@@ -49,15 +51,22 @@ public class ServiceDetails extends FragmentActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_service_details);
-        //getLayoutInflater().inflate(R.layout.activity_service_details, frameLayout);
+        //setContentView(R.layout.activity_service_details);
+        getLayoutInflater().inflate(R.layout.activity_service_details, frameLayout);
 
         /**
          * Setting title and itemChecked
          */
-        //mDrawerList.setItemChecked(position, true);
-        //setTitle("Service Details");
-        //menuCondition="ServiceDetails";
+        mDrawerList.setItemChecked(position, true);
+        setTitle("Service Details");
+        session = new SessionManager(getApplicationContext());
+
+        if(session.isLoggedIn()){
+            //User is already logged in. Hide the login button
+            menuCondition = "UserLogin";
+        }else{
+            menuCondition="ServiceDetails";
+        }
 
         serviceProviderPhoto = (ImageView)findViewById(R.id.service_provider_photo);
         serviceProviderName = (TextView)findViewById(R.id.service_provider_name);

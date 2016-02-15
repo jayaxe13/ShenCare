@@ -1,19 +1,25 @@
 package com.shencare.shencaremobile;
 
 import android.content.Context;
+import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.shencare.shencaremobile.Util.SessionManager;
 
 public class EventDetails extends Navigation_drawer implements View.OnClickListener{
     private TextView eventName, eventDate, eventTime, eventVenue, eventDetails;
     private Button register;
     private String name, date, time, venue, details, confirmationMsg;
     Context context = this;
+    private SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +31,14 @@ public class EventDetails extends Navigation_drawer implements View.OnClickListe
          */
         //mDrawerList.setItemChecked(position, true);
         setTitle("Event Details");
-        menuCondition = "Events Details";
+        session = new SessionManager(getApplicationContext());
+
+        if(session.isLoggedIn()){
+            //User is already logged in. Hide the login button
+            menuCondition = "UserLogin";
+        }else{
+            menuCondition = "Events Details";
+        }
 
         register = (Button) findViewById(R.id.registerButton);
         register.setOnClickListener(this);
@@ -59,7 +72,18 @@ public class EventDetails extends Navigation_drawer implements View.OnClickListe
         switch (id) {
             //click register button
             case R.id.registerButton:
-                eventRegister();
+                if(session.isLoggedIn()){
+                    //User is already logged in. Hide the login button
+                    eventRegister();
+                }else{
+                    final Toast bookEventWarn = Toast.makeText(getBaseContext(), R.string.bookEventWarning,Toast.LENGTH_LONG);
+                    bookEventWarn.setGravity(Gravity.CENTER, 0, 0);
+                    bookEventWarn.show();
+                    new CountDownTimer(4000, 1000) {
+                        public void onTick(long millisUntilFinished) {bookEventWarn.show();}
+                        public void onFinish() {bookEventWarn.cancel();}
+                    }.start();
+                }
                 break;
 
         }
@@ -68,8 +92,6 @@ public class EventDetails extends Navigation_drawer implements View.OnClickListe
 
     public void eventRegister(){
         //prepare for confirmation message
-
-
         confirmationMsg = "The event you are about to register for:\n\n" + name + "\nDate: " + date
                 + "\nTime: " + time + "\nVenue: " + venue;
         //construct dialog box

@@ -1,9 +1,10 @@
 package com.shencare.shencaremobile.userPackage;
 
+
 /**
  * Created by Administrator on 2016/2/11.
  */
-public class ShencareUser {
+public class ShencareUser{
     private String username;
     private String surname;
     private String firstname;
@@ -15,12 +16,12 @@ public class ShencareUser {
     private String pot;
     private String mpl;
 
-    public ShencareUser(){
+    public ShencareUser() {
     }
 
 
     public ShencareUser(String sUsername, String sSurname, String sFirstname, String sEmail, String sPassword,
-                        String sContact, String sGender, String sAddress, String sPot, String sMpl){
+                        String sContact, String sGender, String sAddress, String sPot, String sMpl) {
         this.username = sUsername;
         this.surname = sSurname;
         this.firstname = sFirstname;
@@ -35,12 +36,12 @@ public class ShencareUser {
 
     //For user registration since at the registration stage the user is not required to input their gender and address
     public ShencareUser(String sUsername, String sSurname, String sFirstname, String sEmail, String sPassword, String sContact,
-                        String sPot, String sMpl){
+                        String sPot, String sMpl) {
         this(sUsername, sSurname, sFirstname, sEmail, sPassword, sContact, null, null, sPot, sMpl);
     }
 
-    public ShencareUser(String sUsername, String sSurname, String sFirstname, String sEmail, String sContact){
-        this(sUsername,sSurname,sFirstname, sEmail, null,sContact,null,null,null,null);
+    public ShencareUser(String sUsername, String sSurname, String sFirstname, String sEmail, String sContact) {
+        this(sUsername, sSurname, sFirstname, sEmail, null, sContact, null, null, null, null);
     }
 
     public String getUsername() {
@@ -122,4 +123,5 @@ public class ShencareUser {
     public void setMpl(String mpl) {
         this.mpl = mpl;
     }
+
 }
