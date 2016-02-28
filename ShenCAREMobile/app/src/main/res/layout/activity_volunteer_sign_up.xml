@@ -147,8 +147,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:focusable="true"
                 android:clickable="true"
-                android:focusableInTouchMode="true"
                 android:paddingTop="20px"
+                android:focusableInTouchMode="true"
                 android:textColor="@color/fontColor" />
 
             <RadioGroup

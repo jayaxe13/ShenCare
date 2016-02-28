@@ -1,4 +1,4 @@
-package com.shencare.shencaremobile.userPackage;
+package com.shencare.shencaremobile.UserPackage;
 
 import android.util.Log;
 
@@ -16,9 +16,12 @@ public class ShencareUserProfileManager {
     // JSON Node names
     private static final String TAG_USERNAME = "username";
     private static final String TAG_EMAIL = "email";
-    private static final String TAG_SURNAME = "firstname";
-    private static final String TAG_LASTNAME = "lastname";
+    private static final String TAG_NAME = "firstname";
+    private static final String TAG_SURNAME = "lastname";
     private static final String TAG_CONTACT = "telephone";
+    private static final String TAG_POT = "pref_ot";
+    private static final String TAG_LOCATION = "location";
+    private static final String TAG_PASSWORD = "password";
 
     public static ShencareUser ParseJSON(String json) {
         if (json != null) {
@@ -28,11 +31,14 @@ public class ShencareUserProfileManager {
 
                 String sUsername = jsonObjUser.getString(TAG_USERNAME);
                 String sEmail = jsonObjUser.getString(TAG_EMAIL);
-                String sSurname = jsonObjUser.getString(TAG_SURNAME);
-                String sLastname = jsonObjUser.getString(TAG_LASTNAME);
+                String sName = jsonObjUser.getString(TAG_NAME);
+                String sLastname = jsonObjUser.getString(TAG_SURNAME);
                 String sContact = jsonObjUser.getString(TAG_CONTACT);
+                String sPOT = jsonObjUser.getString(TAG_POT);
+                String sLocation = jsonObjUser.getString(TAG_LOCATION);
+                String sPassword = jsonObjUser.getString(TAG_PASSWORD);
 
-                su = new ShencareUser(sUsername, sSurname, sLastname, sEmail, sContact);
+                su = new ShencareUser(sUsername, sName, sLastname, sEmail,sPassword, sContact, sPOT,sLocation);
                 return su;
             } catch (JSONException e) {
             e.printStackTrace();

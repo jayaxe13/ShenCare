@@ -14,7 +14,7 @@
         android:layout_width="800dp"
         android:layout_height="175dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/happyelderly"
+        android:src="@drawable/origami"
         android:background="@color/drawerList"/>
 
 
@@ -150,14 +150,14 @@
             <ScrollView
                 android:layout_marginTop="2dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:fillViewport="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true">
                 <TextView
                     android:id="@+id/eventDetails"
                     android:layout_width="245dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="110dp"
                     android:text="@string/eventDetails"
                     android:textAlignment="textStart"
                     android:gravity="start"
@@ -173,7 +173,7 @@
         </RelativeLayout>
     </RelativeLayout>
     <!-- register now button-->
-    <Button
+    <!--<Button
         android:id="@+id/registerButton"
         android:layout_width="304px"
         android:layout_height="89px"
@@ -182,7 +182,7 @@
         android:paddingTop="50dp"
         android:background="@drawable/register_button"
         android:clickable="true"
-        android:onClick="onClick" />
+        android:onClick="onClick" /> -->
 
 
 </RelativeLayout>

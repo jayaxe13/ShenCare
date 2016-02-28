@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:text="My Username"
+                    android:text="Username"
                     android:textSize="60px"/>
 
                 <TextView
@@ -120,7 +120,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:background="@drawable/profile_text"/>
 
-                <TextView
+                <!--<TextView
                     android:id="@+id/profile_gender_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                     android:text="Female"
                     android:gravity="left"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:background="@drawable/profile_text"/>
+                    android:background="@drawable/profile_text"/> -->
 
 
             <TextView
@@ -151,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_below="@+id/genderText"
+                    android:layout_below="@+id/user_surname"
                     android:layout_marginTop="10dp"
                     android:text="Contact Number"
                     android:textSize="60px" />
@@ -190,7 +190,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:background="@drawable/profile_text"/>
 
-                <TextView
+                <!--<TextView
                     android:id="@+id/profile_addr_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -212,7 +212,7 @@
                     android:isScrollContainer="true"
                     android:gravity="left"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:background="@drawable/profile_text"/>
+                    android:background="@drawable/profile_text"/> -->
 
             <TextView
                 android:id="@+id/profile_pot_field"
@@ -220,7 +220,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/user_addr"
+                android:layout_below="@+id/user_email"
                 android:layout_marginTop="10dp"
                 android:text="Preferred Occupational Therapist"
                 android:textSize="60px" />

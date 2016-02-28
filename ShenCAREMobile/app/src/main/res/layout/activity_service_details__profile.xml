@@ -29,7 +29,7 @@
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/serviceDetail_Education"
-            android:text="2ewqkljer'qwlerkjqwer'lkqwjercqwlerkjqwer'qwlekzkjrpqwjek"
+            android:text="Undergraduate"
             android:textAppearance="?android:attr/textAppearanceMedium"
             />
     </RelativeLayout>
@@ -116,7 +116,7 @@
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/serviceDetail_Email"
-            android:text="blabla@gmail.com"
+            android:text="azuki@gmail.com"
             android:textAppearance="?android:attr/textAppearanceMedium"
             />
     </RelativeLayout>

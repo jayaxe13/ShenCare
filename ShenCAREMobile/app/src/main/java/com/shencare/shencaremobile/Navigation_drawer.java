@@ -18,7 +18,8 @@ public class Navigation_drawer extends AppCompatActivity {
 
     protected FrameLayout frameLayout;
     protected ListView mDrawerList;
-    protected String[] listArray = {"Home","My Profile", "My Cart", "My Order","My Events", "My Services"};
+    protected String[] listArray = {"Home","My Profile"};
+    protected String[] listA = {"Home","My Profile", "My Cart", "My Order","My Events", "My Services"};
 
     /**
      * Static variable for selected item position. Which can be used in child activity to know which item is selected from the list.
@@ -149,7 +150,7 @@ public class Navigation_drawer extends AppCompatActivity {
                 startActivity(new Intent(this, Home.class));
                 break;
             case 1:
-                startActivity(new Intent(this, UserProfile.class));
+                startActivity(new Intent(getApplicationContext(), UserProfile.class));
                 break;
             case 2:
                 //startActivity(new Intent(this, Item3Activity.class));
@@ -206,7 +207,7 @@ public class Navigation_drawer extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
-        if(menuCondition.equals("UserLogin")) {
+        if(menuCondition.equals("UserLogin")|| menuCondition.equals("VolunteerSignUp")) {
             menu.findItem(R.id.action_edit).setVisible(false);
             menu.findItem(R.id.action_save).setVisible(false);
             menu.findItem(R.id.action_login).setVisible(false);

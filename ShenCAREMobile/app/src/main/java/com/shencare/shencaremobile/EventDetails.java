@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import com.shencare.shencaremobile.Util.SessionManager;
 
@@ -20,6 +21,7 @@ public class EventDetails extends Navigation_drawer implements View.OnClickListe
     private String name, date, time, venue, details, confirmationMsg;
     Context context = this;
     private SessionManager session;
+    private Intent intentFromEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,38 +42,31 @@ public class EventDetails extends Navigation_drawer implements View.OnClickListe
             menuCondition = "Events Details";
         }
 
-        register = (Button) findViewById(R.id.registerButton);
-        register.setOnClickListener(this);
+        intentFromEvent = getIntent();
+        //register = (Button) findViewById(R.id.registerButton);
+        //register.setOnClickListener(this);
         eventName = (TextView) findViewById(R.id.eventName);
-        eventName.setText(R.string.eventName);
+        eventName.setText(intentFromEvent.getStringExtra("eventName"));
 
         eventDate = (TextView) findViewById(R.id.eventDate);
-        eventDate.setText(R.string.eventDate);
+        eventDate.setText(intentFromEvent.getStringExtra("eventDate"));
 
         eventTime = (TextView) findViewById(R.id.eventTime);
-        eventTime.setText(R.string.eventTime);
+        eventTime.setText(intentFromEvent.getStringExtra("eventDuration"));
 
         eventVenue = (TextView) findViewById(R.id.eventVenue);
-        eventVenue.setText(R.string.eventVenue);
+        eventVenue.setText(intentFromEvent.getStringExtra("eventVenue"));
 
         eventDetails = (TextView) findViewById(R.id.eventDetails);
-        eventDetails.setText(R.string.eventDetails);
-
-        name = getString(R.string.eventName);
-        date = getString(R.string.eventDate);
-        time = getString(R.string.eventTime);
-        venue = getString(R.string.eventVenue);
-        details = getString(R.string.eventDetails);
+        eventDetails.setText(intentFromEvent.getStringExtra("info"));
     }
 
     @Override
     public void onClick(View v) {
-
-
         int id = v.getId();
         switch (id) {
             //click register button
-            case R.id.registerButton:
+            /**case R.id.registerButton:
                 if(session.isLoggedIn()){
                     //User is already logged in. Hide the login button
                     eventRegister();
@@ -79,13 +74,12 @@ public class EventDetails extends Navigation_drawer implements View.OnClickListe
                     final Toast bookEventWarn = Toast.makeText(getBaseContext(), R.string.bookEventWarning,Toast.LENGTH_LONG);
                     bookEventWarn.setGravity(Gravity.CENTER, 0, 0);
                     bookEventWarn.show();
-                    new CountDownTimer(4000, 1000) {
+                    new CountDownTimer(3000, 1000) {
                         public void onTick(long millisUntilFinished) {bookEventWarn.show();}
                         public void onFinish() {bookEventWarn.cancel();}
                     }.start();
                 }
-                break;
-
+                break;*/
         }
 
     }

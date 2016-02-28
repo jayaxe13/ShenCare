@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:text="My Username"
+                    android:text="Username"
                     android:textSize="60px"/>
 
                 <TextView
@@ -117,7 +117,7 @@
                     android:layout_below="@id/edit_profile_surname_field"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
-                <TextView
+                <!--<TextView
                     android:id="@+id/edit_profile_gender_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -149,7 +149,7 @@
                         android:layout_height="wrap_content"
                         android:text="Female"
                         android:textColor="@color/fontColor" />
-                </RadioGroup>
+                </RadioGroup> -->
 
                 <TextView
                     android:id="@+id/edit_profile_contact_field"
@@ -157,7 +157,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_below="@+id/genderText"
+                    android:layout_below="@+id/edit_user_name"
                     android:layout_marginTop="10dp"
                     android:text="Contact Number"
                     android:textSize="60px" />
@@ -197,7 +197,7 @@
                     android:layout_alignTop="@+id/edit_profile_email_field"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
-                <TextView
+                <!--<TextView
                     android:id="@+id/edit_profile_addr_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -219,7 +219,7 @@
                     android:layout_alignTop="@+id/edit_profile_addr_field"
                     android:inputType="textAutoCorrect"
                     android:text="123 Toa Payoh Lorong 1 #12-01203"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge" /> -->
 
                 <TextView
                     android:id="@+id/edit_profile_pot_field"
@@ -227,7 +227,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_below="@+id/user_addr"
+                    android:layout_below="@+id/edit_user_email"
                     android:layout_marginTop="10dp"
                     android:text="Preferred Occupational Therapist"
                     android:textSize="60px"
@@ -244,7 +244,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/edit_profile_pot"
-                        android:entries="@array/pot_characters"
                         android:imeActionId="@+id/registration"
                         android:imeActionLabel="@string/action_sign_up_short"
                         android:imeOptions="actionUnspecified"
@@ -279,7 +278,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/edit_profile_mpl"
-                        android:entries="@array/mpl_characters"
                         android:imeOptions="actionUnspecified"
                         android:layout_below="@+id/edit_profile_mpl"
                         android:gravity="center"

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:id="@+id/service_list_item_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="List item"
+            android:textColor="@color/fontColor"
+            android:textSize="22sp"/>
+
+        <TextView
+            android:id="@+id/service_list_item_type"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/service_list_item_title"
+            android:text="Volunteer"
+            android:textColor="@color/fontColor"
+            android:textSize="18sp"/>
+
+
+        </RelativeLayout>
+
+</LinearLayout>

@@ -74,4 +74,7 @@
 
     <!--Logout Info-->
     <string name="logoutInfo">You have successfully logged out</string>
+
+    <!--Service Displaying Page-->
+    <string name="defaultServiceMsg">ShenCARE is here to assist you with both long-term or respite solutions, providing precision information with excellent and professionally care service providers for live-in or live-out care.</string>
 </resources>

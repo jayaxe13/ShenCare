@@ -1,4 +1,4 @@
-package com.shencare.shencaremobile.eventPackage;
+package com.shencare.shencaremobile.EventPackage;
 
 
 import java.text.ParseException;
@@ -24,22 +24,22 @@ public class EventsManager {
     }
 
     public void addEvents(){
-        Date firstRecord = formatDate("2016-02-05");
+        Date firstRecord = formatDate("2016-02-10");
         theEvents.put(firstRecord, createEventList());
     }
     public List<IndividualEvent> createEventList(){
         List<IndividualEvent> temp = new ArrayList<>();
-        IndividualEvent event1 = new IndividualEvent("SMU Patron's Day", formatDate("2016-02-05"),"14:00 - 18:00","Marina Barrage", "Have fun there." );
+        IndividualEvent event1 = new IndividualEvent("Origami folding Event", formatDate("2016-02-10"),"10:00 - 16:00","National Library", "Have a day of fun learning how to fold classic origami pieces and get to meet people" );
         temp.add(event1);
-        IndividualEvent event2 = new IndividualEvent("SMU Welfare", formatDate("2016-02-05"),"11:00 - 14:00","SMU", "Use ur matric card to get Welfare." );
+        IndividualEvent event2 = new IndividualEvent("Campus Walk", formatDate("2016-02-10"),"11:00 - 14:00","SMU", "Use ur matric card to get Welfare." );
         temp.add(event2);
-        IndividualEvent event3 = new IndividualEvent("SMU HAH 1", formatDate("2016-02-05"),"11:00 - 14:00","City Hall", "Use ur matric card to get Welfare." );
+        IndividualEvent event3 = new IndividualEvent("Massive Dance", formatDate("2016-02-10"),"11:00 - 14:00","City Hall", "Use ur matric card to get Welfare." );
         temp.add(event3);
-        IndividualEvent event4 = new IndividualEvent("SMU Azuki", formatDate("2016-02-05"),"11:00 - 14:00","Japan", "Use ur matric card to get Welfare." );
+        IndividualEvent event4 = new IndividualEvent("ChingGay", formatDate("2016-02-10"),"11:00 - 14:00","Orchard", "Use ur matric card to get Welfare." );
         temp.add(event4);
-        IndividualEvent event5 = new IndividualEvent("SMU SIS DAY", formatDate("2016-02-05"),"11:00 - 14:00","SIS", "Use ur matric card to get Welfare." );
+        IndividualEvent event5 = new IndividualEvent("Bungee Jump", formatDate("2016-02-10"),"11:00 - 14:00","Sentosa", "Use ur matric card to get Welfare." );
         temp.add(event5);
-        IndividualEvent event6 = new IndividualEvent("SMU Wonderland", formatDate("2016-02-05"),"11:00 - 14:00","Sentosa", "Use ur matric card to get Welfare." );
+        IndividualEvent event6 = new IndividualEvent("USS Visiting", formatDate("2016-02-10"),"11:00 - 14:00","Sentosa", "Use ur matric card to get Welfare." );
         temp.add(event6);
         return temp;
     }

@@ -1,4 +1,4 @@
-package com.shencare.shencaremobile.userPackage;
+package com.shencare.shencaremobile.UserPackage;
 
 
 /**
@@ -20,11 +20,11 @@ public class ShencareUser{
     }
 
 
-    public ShencareUser(String sUsername, String sSurname, String sFirstname, String sEmail, String sPassword,
+    public ShencareUser(String sUsername, String sName, String sSurname, String sEmail, String sPassword,
                         String sContact, String sGender, String sAddress, String sPot, String sMpl) {
         this.username = sUsername;
+        this.firstname = sName;
         this.surname = sSurname;
-        this.firstname = sFirstname;
         this.email = sEmail;
         this.password = sPassword;
         this.contactNumber = sContact;
@@ -35,13 +35,13 @@ public class ShencareUser{
     }
 
     //For user registration since at the registration stage the user is not required to input their gender and address
-    public ShencareUser(String sUsername, String sSurname, String sFirstname, String sEmail, String sPassword, String sContact,
+    public ShencareUser(String sUsername, String sName, String sSurname, String sEmail, String sPassword, String sContact,
                         String sPot, String sMpl) {
-        this(sUsername, sSurname, sFirstname, sEmail, sPassword, sContact, null, null, sPot, sMpl);
+        this(sUsername, sName, sSurname, sEmail, sPassword, sContact, null, null, sPot, sMpl);
     }
 
-    public ShencareUser(String sUsername, String sSurname, String sFirstname, String sEmail, String sContact) {
-        this(sUsername, sSurname, sFirstname, sEmail, null, sContact, null, null, null, null);
+    public ShencareUser(String sUsername, String sName, String sSurname, String sEmail, String sContact) {
+        this(sUsername, sName, sSurname, sEmail, null, sContact, null, null, null, null);
     }
 
     public String getUsername() {

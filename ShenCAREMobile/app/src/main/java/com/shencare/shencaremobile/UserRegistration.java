@@ -30,7 +30,7 @@ public class UserRegistration extends Navigation_drawer implements View.OnClickL
     private Button regis_submit;
     private Spinner regis_pot, regis_mpl;
     private String selected_pot, selected_mpl, new_name, new_surname,
-            new_username, new_pw, new_email, display_name, urlx, pref_ot, location, telephone, pref, loc, x, y, nonce;
+            new_username, new_pw, new_email, display_name, urlx, pref_ot, location, telephone, pref, loc, x, y, nonce, user_id;
     private TextView termOfUseView,regis_pot_text, regis_mpl_text;
     private CheckBox checkAgree;
     private SessionManager session;
@@ -89,7 +89,6 @@ public class UserRegistration extends Navigation_drawer implements View.OnClickL
             // term of use
             case R.id.regis_term:
                 startActivity(new Intent(UserRegistration.this, Term_Of_Use.class));
-                finish();
                 break;
             //Register
             case R.id.registration_button:
@@ -119,13 +118,14 @@ public class UserRegistration extends Navigation_drawer implements View.OnClickL
         boolean check = true;
         if(!Validation.isGeneralName(regis_name,true)) check = false;
         if(!Validation.isGeneralName(regis_surname,true)) check =false;
-        if(!Validation.isUsername(regis_username,true)) check = false;
-        if(!Validation.isPassword(regis_pw,true)) check = false;
-        if(!Validation.isValidConfirmedPassword(regis_cp, regis_pw.getText().toString().trim(),true)) check = false;
-        if(!Validation.isEmailAddress(regis_email,true)) check = false;
+        if(!Validation.isUsername(regis_username, true)) check = false;
+        if(!Validation.isPassword(regis_pw, true)) check = false;
+        if(!Validation.isValidConfirmedPassword(regis_cp, regis_pw.getText().toString().trim(), true)) check = false;
+        if(!Validation.isEmailAddress(regis_email, true)) check = false;
         if(!validateDropDown(regis_pot, selected_pot, regis_pot_text)) check = false;
         if(!validateDropDown(regis_mpl, selected_mpl, regis_mpl_text)) check = false;
         if(!isAgreementChecked()) check = false;
+        if(!Validation.isPhone(regis_telephone,true)) check=false;
 
         return check;
     }
@@ -219,10 +219,10 @@ public class UserRegistration extends Navigation_drawer implements View.OnClickL
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress loading dialog
-            proDialog = new ProgressDialog(UserRegistration.this);
-            proDialog.setMessage("Loading...");
-            proDialog.setCancelable(false);
-            proDialog.show();
+           // proDialog = new ProgressDialog(UserRegistration.this);
+            //proDialog.setMessage("Loading...");
+            //proDialog.setCancelable(false);
+            //proDialog.show();
         }
 
         @Override
@@ -261,8 +261,8 @@ public class UserRegistration extends Navigation_drawer implements View.OnClickL
         protected void onPostExecute(Void requestresult) {
             super.onPostExecute(requestresult);
             // Dismiss the progress dialog
-            if (proDialog.isShowing())
-                proDialog.dismiss();
+            //if (proDialog.isShowing())
+              //  proDialog.dismiss();
 
         }
     }
@@ -276,16 +276,17 @@ public class UserRegistration extends Navigation_drawer implements View.OnClickL
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress loading dialog
-            proDialog = new ProgressDialog(UserRegistration.this);
-            proDialog.setMessage("Loading...");
-            proDialog.setCancelable(false);
-            proDialog.show();
+            //proDialog = new ProgressDialog(UserRegistration.this);
+            //proDialog.setMessage("Loading...");
+           // proDialog.setCancelable(false);
+           // proDialog.show();
         }
 
         @Override
         protected Void doInBackground(Void... arg0) {
             // Creating service handler class instance
             WebRequest webreq = new WebRequest();
+            //final String TAG_USERID = "user_id";
 
             //String url = "http://shencare.net/api/user/register/?nonce=c8e10c5b9e&username=" + regis_username + "&email=" + regis_email + "&user_pass=" + regis_pw + "&firstname=" + regis_name + "&lastname=" + regis_surname;
             urlx ="http://shencare.net/api/user/register_new_user/?nonce="+nonce+"&username="
@@ -293,20 +294,35 @@ public class UserRegistration extends Navigation_drawer implements View.OnClickL
                     +"&lastname="+new_surname+"&display_name="+display_name+"&telephone="+telephone
                     +"&pref_ot="+pref+"&location="+loc+"";
             // Making a request to url and getting response
-            webreq.makeWebServiceCall(urlx, WebRequest.POSTRequest);
+            String jsonStr = webreq.makeWebServiceCall(urlx, WebRequest.POSTRequest);
+            Log.d("Response: ", "> " + urlx);
 
-            //Log.d("Response: ", "> " + jsonStr);//null here
+            /*if (jsonStr != null) {
+                try {
+                    JSONObject jsonNonce = new JSONObject(jsonStr);
 
-            //tempUser = ShencareUserProfileManager.ParseJSON(jsonStr);
+                    user_id = jsonNonce.getString(TAG_USERID);
+
+                    return null;
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            } else {
+                Log.e("ServiceHandler", "No data received from HTTP request");
+                return null;
+            }*/
             return null;
+
+
         }
 
         @Override
         protected void onPostExecute(Void requestresult) {
             super.onPostExecute(requestresult);
             // Dismiss the progress dialog
-            if (proDialog.isShowing())
-                proDialog.dismiss();
+            //if (proDialog.isShowing())
+            //    proDialog.dismiss();
         }
     }
 

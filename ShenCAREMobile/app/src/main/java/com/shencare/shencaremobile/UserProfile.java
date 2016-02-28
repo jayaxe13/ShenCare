@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +15,8 @@ import android.widget.Toast;
 
 import com.shencare.shencaremobile.Util.SessionManager;
 import com.shencare.shencaremobile.Util.WebRequest;
-import com.shencare.shencaremobile.userPackage.ShencareUser;
-import com.shencare.shencaremobile.userPackage.ShencareUserProfileManager;
+import com.shencare.shencaremobile.UserPackage.ShencareUser;
+import com.shencare.shencaremobile.UserPackage.ShencareUserProfileManager;
 
 public class UserProfile extends Navigation_drawer implements View.OnClickListener {
     private Button editButton,logoutButton;
@@ -46,6 +45,7 @@ public class UserProfile extends Navigation_drawer implements View.OnClickListen
             startActivity(intent);
             finish();
         }else{
+            Log.d("Fields: ", ">" + session.getUserDetails());
             universalUser = session.getUserDetails();
             new GetStudents().execute();
         }
@@ -55,10 +55,10 @@ public class UserProfile extends Navigation_drawer implements View.OnClickListen
         username = (TextView)findViewById(R.id.user_username);
         name = (TextView)findViewById(R.id.user_name);
         surname = (TextView)findViewById(R.id.user_surname);
-        gender = (TextView)findViewById(R.id.user_gender);
+        //gender = (TextView)findViewById(R.id.user_gender);
         contact = (TextView)findViewById(R.id.user_contact);
         email = (TextView)findViewById(R.id.user_email);
-        address = (TextView)findViewById(R.id.user_addr);
+        //address = (TextView)findViewById(R.id.user_addr);
         pot = (TextView)findViewById(R.id.user_pot);
         mpl = (TextView)findViewById(R.id.user_mpl);
 
@@ -133,18 +133,40 @@ public class UserProfile extends Navigation_drawer implements View.OnClickListen
         //R.id.email, R.id.mobile});
 
         //setListAdapter(adapter);
-
             username.setText(tempUser.getUsername());
             surname.setText(tempUser.getSurname());
             name.setText(tempUser.getFirstname());
             email.setText(tempUser.getEmail());
             contact.setText(tempUser.getContactNumber());
+            //pot.setText(tempUser.getPot());
+            //mpl.setText(tempUser.getMpl());
+
+            String[] termlist = getResources().getStringArray(R.array.unsorted_terms);
+
+            for (int i=0; i<termlist.length -1; i++){
+                if(tempUser.getPot().equalsIgnoreCase(Integer.toString(i))){
+                    Log.d("PrefOT: ", ">" + termlist[i-3]);
+                    sPot = termlist[i-3];
+                    pot.setText(sPot);
+                }
+            }
+            for (int j=0; j<termlist.length -1; j++){
+                if(tempUser.getMpl().equalsIgnoreCase(Integer.toString(j))){
+                    Log.d("Location: ", ">" + termlist[j-3]);
+                    sMpl = termlist[j-3];
+                    mpl.setText(sMpl);
+                }
+            }
+
+
             //get parameters for passing to the userProfileEdit page
             sUsername = tempUser.getUsername();
             sName = tempUser.getFirstname();
             sSurname = tempUser.getSurname();
             sContact = tempUser.getContactNumber();
             sEmail = tempUser.getEmail();
+            //sPot = tempUser.getPot();
+            //sMpl = tempUser.getMpl();
 
         }
     }
@@ -167,6 +189,8 @@ public class UserProfile extends Navigation_drawer implements View.OnClickListen
                 intentUserProfile.putExtra("surname", sSurname);
                 intentUserProfile.putExtra("contact", sContact);
                 intentUserProfile.putExtra("email",sEmail);
+                intentUserProfile.putExtra("pot",sPot);
+                intentUserProfile.putExtra("mpl",sMpl);
                 startActivity(intentUserProfile);
                 return true;
 

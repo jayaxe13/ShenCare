@@ -1,6 +1,4 @@
-package com.shencare.shencaremobile.volunteerPackage;
-
-import com.shencare.shencaremobile.userPackage.ShencareUser;
+package com.shencare.shencaremobile.VolunteerPackage;
 
 /**
  * Created by Administrator on 2016/2/11.

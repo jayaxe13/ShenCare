@@ -31,7 +31,8 @@ public class SessionManager {
 
     //User name (make variable public to access from outside)
     public static final String KEY_USERNAME = "username";
-    //public static final String KEY_COOKIE="cookie";
+    public static final String KEY_COOKIE="cookie";
+    public static final String KEY_USERID = "userId";
 
     //Constructor
     public SessionManager(Context context){
@@ -40,17 +41,18 @@ public class SessionManager {
         editor = pref.edit();
     }
 
-    public void setLogin(boolean isLoggedIn, String username){
+    public void setLogin(boolean isLoggedIn, String username, String cookie, String userId){
         //Storing login value as TRUE
-        editor.putBoolean(KEY_IS_LOGGEDIN,isLoggedIn);
+        editor.putBoolean(KEY_IS_LOGGEDIN, isLoggedIn);
 
         //Storing username in pref
         editor.putString(KEY_USERNAME,username);
-        //editor.putString(KEY_COOKIE,cookie)
+        editor.putString(KEY_COOKIE,cookie);
+        editor.putString(KEY_USERID, userId);
         //commit changes
         editor.commit();
 
-        Log.d(TAG,"User login session modified!");
+        Log.d(TAG, "User login session modified!");
     }
 
     /**
@@ -58,6 +60,7 @@ public class SessionManager {
      * **/
     public boolean isLoggedIn(){
         return pref.getBoolean(KEY_IS_LOGGEDIN, false);
+        //return true;
     }
 
 
@@ -65,7 +68,14 @@ public class SessionManager {
      * Get stored session data
      * */
     public String getUserDetails(){
-        return pref.getString(KEY_USERNAME,null);
+        return pref.getString(KEY_USERNAME, null);
+    }
+
+    public String getUserCookie(){
+        return pref.getString(KEY_COOKIE, null);
+    }
+    public String getUserId(){
+        return pref.getString(KEY_USERID, null);
     }
 
     /**

@@ -1,10 +1,10 @@
 package com.shencare.shencaremobile;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.widget.AdapterView;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -12,8 +12,9 @@ import android.widget.TextView;
 import com.shencare.shencaremobile.CalendarPackage.CompactCalendarView;
 import com.shencare.shencaremobile.CalendarPackage.domain.CalendarDayEvent;
 import com.shencare.shencaremobile.Util.SessionManager;
-import com.shencare.shencaremobile.eventPackage.EventsManager;
-import com.shencare.shencaremobile.eventPackage.IndividualEvent;
+import com.shencare.shencaremobile.EventPackage.EventListItemAdapter;
+import com.shencare.shencaremobile.EventPackage.EventsManager;
+import com.shencare.shencaremobile.EventPackage.IndividualEvent;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,6 +34,8 @@ public class Events extends Navigation_drawer {
     private EventsManager eventsMgr = new EventsManager();
     private Map<Date, List<IndividualEvent>> events = new HashMap<>();
     private SessionManager session;
+    private SimpleDateFormat eventDetailFormatter = new SimpleDateFormat("yyyy-MMM-dd");
+    private EventListItemAdapter adapter;
 
     private TextView dateDisplay;
 
@@ -57,14 +60,32 @@ public class Events extends Navigation_drawer {
             menuCondition = "ElderlyEvents";
         }
 
-        final List<String> mutableEvents = new ArrayList<>();
-
+        //final List<String> mutableEvents = new ArrayList<>();
+        final ArrayList<IndividualEvent> mutableEvents = new ArrayList<>();
         final ListView eventsListView = (ListView) findViewById(R.id.bookings_listview);
         final Button showPreviousMonthBut = (Button) findViewById(R.id.prev_button);
         final Button showNextMonthBut = (Button) findViewById(R.id.next_button);
 
-        final ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mutableEvents);
+        adapter = new EventListItemAdapter(mutableEvents,getApplicationContext());
         eventsListView.setAdapter(adapter);
+
+        //eventsListView.setTextFilterEnabled(true);
+        //String value = (String)adapter.getItemAtPosition(position);
+
+
+        // Add listener for item clicks
+        eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                // Retrieve our class object and use index to resolve item tapped
+                final IndividualEvent item = mutableEvents.get(position);
+                goToEventDetail(item.getEventName(), eventDetailFormatter.format(item.getEventDate()), item.getEventDuration(), item.getEventVenue(), item.getEventInfo());
+
+            }
+        });
+
+
         //String value = (String)adapter.getItemAtPosition(position);
         final CompactCalendarView compactCalendarView = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         compactCalendarView.drawSmallIndicatorForEvents(true);
@@ -85,14 +106,17 @@ public class Events extends Navigation_drawer {
                 List<IndividualEvent> eventsFromMap = events.get(dateClicked);
                 //Log.d("MainActivity", "inside onclick " + dateClicked);
                 if (eventsFromMap != null) {
-                    Log.d("MainActivity", eventsFromMap.toString());
+                    //Log.d("MainActivity", eventsFromMap.toString());
                     mutableEvents.clear();
                     for (IndividualEvent thisEvent : eventsFromMap) {
-                        mutableEvents.add(thisEvent.getEventName());
+                        mutableEvents.add(thisEvent);
                     }
+                    adapter.addAll(mutableEvents);
+                    //System.out.println(mutableEvents);
+                   //System.out.println(adapter.getCount());
                     // below will remove events
                     // compactCalendarView.removeEvent(new CalendarDayEvent(dateClicked.getTime(), Color.argb(255, 169, 68, 65)), true);
-                    adapter.notifyDataSetChanged();
+                    //adapter.notifyDataSetChanged();
                 } else {
                     mutableEvents.clear();
                     adapter.notifyDataSetChanged();
@@ -119,6 +143,17 @@ public class Events extends Navigation_drawer {
                 compactCalendarView.showNextMonth();
             }
         });
+    }
+
+    public void goToEventDetail(String eventName, String eventDate, String duration, String venue, String info){
+        //Start Intend to UserProfileEdit class and pass the ShencareUser object to the UserProfileEdit class
+        Intent intentEventDetail = new Intent(this, EventDetails.class);
+        intentEventDetail.putExtra("eventName", eventName);
+        intentEventDetail.putExtra("eventDate", eventDate);
+        intentEventDetail.putExtra("eventDuration", duration);
+        intentEventDetail.putExtra("eventVenue", venue);
+        intentEventDetail.putExtra("info", info);
+        startActivity(intentEventDetail);
     }
 
     public Map<Date, List<IndividualEvent>> addEventsIntoCalendar(CompactCalendarView compactCalendarView){

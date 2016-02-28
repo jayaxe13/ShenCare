@@ -1,4 +1,4 @@
-package com.shencare.shencaremobile.eventPackage;
+package com.shencare.shencaremobile.EventPackage;
 
 import java.util.Date;
 

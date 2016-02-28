@@ -69,7 +69,7 @@ public class Home extends Navigation_drawer implements View.OnClickListener{
                 startActivity(new Intent(Home.this,Events.class));
                 break;
             case R.id.servicesButton:
-                startActivity(new Intent(Home.this, ServiceDetails.class));
+                startActivity(new Intent(Home.this, Services.class));
                 break;
            // case R.id.shopButton:
                // startActivity(new Intent(Home.this, ShoppingActivity.class));

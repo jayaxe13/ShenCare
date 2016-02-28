@@ -90,12 +90,15 @@
         <item>Yishun</item>
     </string-array>
 
-    <string-array name="care_searvice_category">
+    <string-array name="care_service_category">
+        <item>-- Please select one --</item>
         <item>Volunteer</item>
         <item>Occupational Therapist</item>
         <item>Clinic</item>
-        <item>Reason for Visit</item>
-        <item>By Name</item>
+    </string-array>
+
+    <string-array name="na">
+        <item>Not Applicable</item>
     </string-array>
 
     <string-array name="unsorted_terms">
@@ -205,6 +208,8 @@
         <item>Low Vision Rehabilitation</item>
         <item>Neurological Rehabilitation</item>
         <item>Volunteer	</item>
+
+
 
     </string-array>
 </resources>
